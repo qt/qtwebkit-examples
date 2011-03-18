@@ -1,0 +1,1 @@
+"webkit/fancybrowser Example", "examples/webkit/fancybrowser", "fancybrowser", 0, 7000
