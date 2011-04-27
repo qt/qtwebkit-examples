@@ -25,7 +25,7 @@ RESOURCES += src/anomaly.qrc
 
 symbian {
     TARGET.UID3 = 0xA000CF71
-    include($$QT_SOURCE_TREE/demos/symbianpkgrules.pri)
+    CONFIG += qt_demo
     TARGET.CAPABILITY = NetworkServices
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 }
