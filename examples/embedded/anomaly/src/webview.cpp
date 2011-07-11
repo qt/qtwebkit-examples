@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,29 +39,42 @@
 **
 ****************************************************************************/
 
-#ifndef FLICKCHARM_H
-#define FLICKCHARM_H
+#include "webview.h"
 
-#include <QObject>
+#include <QPaintEvent>
+#include <QWebFrame>
 
-class FlickCharmPrivate;
-class QWidget;
-
-class FlickCharm: public QObject
+WebView::WebView(QWidget *parent)
+    : QWebView(parent)
+    , inLoading(false)
 {
-    Q_OBJECT
-public:
-    FlickCharm(QObject *parent = 0);
-    ~FlickCharm();
-    void activateOn(QWidget *widget);
-    void deactivateFrom(QWidget *widget);
-    bool eventFilter(QObject *object, QEvent *event);
+    connect(this, SIGNAL(loadStarted()), this, SLOT(newPageLoading()));
+    connect(this, SIGNAL(loadFinished(bool)), this, SLOT(pageLoaded(bool)));
+    page()->setPreferredContentsSize(QSize(1024, 768));
+}
 
-protected:
-    void timerEvent(QTimerEvent *event);
+void WebView::paintEvent(QPaintEvent *event)
+{
+    if (inLoading && loadingTime.elapsed() < 750) {
+        QPainter painter(this);
+        painter.setBrush(Qt::white);
+        painter.setPen(Qt::NoPen);
+        foreach (const QRect &rect, event->region().rects()) {
+            painter.drawRect(rect);
+        }
+    } else {
+        QWebView::paintEvent(event);
+    }
+}
 
-private:
-    FlickCharmPrivate *d;
-};
+void WebView::newPageLoading()
+{
+    inLoading = true;
+    loadingTime.start();
+}
 
-#endif // FLICKCHARM_H
+void WebView::pageLoaded(bool)
+{
+    inLoading = false;
+    update();
+}

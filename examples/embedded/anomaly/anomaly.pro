@@ -30,7 +30,7 @@ symbian {
     TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
 }
 
-target.path = $$[QT_INSTALL_DEMOS]/qtwebkit-examples-and-demos/embedded/anomaly
+target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/embedded/anomaly
 sources.files = $$SOURCES $$HEADERS $$RESOURCES *.pro src/images
-sources.path = $$[QT_INSTALL_DEMOS]/qtwebkit-examples-and-demos/embedded/anomaly
+sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/embedded/anomaly
 INSTALLS += target sources

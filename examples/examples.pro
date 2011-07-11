@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS +=  scroller webkit xmlpatterns
+SUBDIRS +=  browser embedded scroller webkit xmlpatterns

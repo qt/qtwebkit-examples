@@ -95,9 +95,9 @@ wince*: {
 }
 
 # install
-target.path = $$[QT_INSTALL_DEMOS]/qtwebkit-examples-and-demos/browser
+target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/browser
 sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.plist *.icns *.ico *.rc *.pro *.html *.doc images htmls data
-sources.path = $$[QT_INSTALL_DEMOS]/qtwebkit-examples-and-demos/browser
+sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/browser
 INSTALLS += target sources
 
 symbian {

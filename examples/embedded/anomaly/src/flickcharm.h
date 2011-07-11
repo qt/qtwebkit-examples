@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,36 +39,29 @@
 **
 ****************************************************************************/
 
-#ifndef HOMEVIEW_H
-#define HOMEVIEW_H
+#ifndef FLICKCHARM_H
+#define FLICKCHARM_H
 
-#include <QWidget>
+#include <QObject>
 
-class QUrl;
+class FlickCharmPrivate;
+class QWidget;
 
-class AddressBar;
-class BookmarksView;
-
-class HomeView : public QWidget
+class FlickCharm: public QObject
 {
     Q_OBJECT
-
 public:
-    HomeView(QWidget *parent);
-
-signals:
-    void urlActivated(const QUrl &url);
-    void addressEntered(const QString &address);
-
-private slots:
-    void gotoAddress(const QString &address);
+    FlickCharm(QObject *parent = 0);
+    ~FlickCharm();
+    void activateOn(QWidget *widget);
+    void deactivateFrom(QWidget *widget);
+    bool eventFilter(QObject *object, QEvent *event);
 
 protected:
-    void focusInEvent(QFocusEvent *event);
+    void timerEvent(QTimerEvent *event);
 
 private:
-    AddressBar *m_addressBar;
-    BookmarksView *m_bookmarks;
+    FlickCharmPrivate *d;
 };
 
-#endif // HOMEVIEW_H
+#endif // FLICKCHARM_H

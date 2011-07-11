@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,36 +39,55 @@
 **
 ****************************************************************************/
 
-#ifndef CONTROLSTRIP_H
-#define CONTROLSTRIP_H
+#include "AddressBar.h"
 
-#include <QWidget>
+#include <QtCore>
+#include <QtGui>
 
-class ControlStrip : public QWidget
+AddressBar::AddressBar(QWidget *parent)
+    : QWidget(parent)
 {
-    Q_OBJECT
+    m_lineEdit = new QLineEdit(parent);
+    m_lineEdit->setPlaceholderText("Enter address or search terms");
+    connect(m_lineEdit, SIGNAL(returnPressed()), SLOT(processAddress()));
+    m_toolButton = new QToolButton(parent);
+    m_toolButton->setText("Go");
+    connect(m_toolButton, SIGNAL(clicked()), SLOT(processAddress()));
+}
 
-public:
-    ControlStrip(QWidget *parent = 0);
+QSize AddressBar::sizeHint() const
+{
+    return m_lineEdit->sizeHint();
+}
 
-    QSize sizeHint() const;
-    QSize minimumSizeHint() const;
+void AddressBar::processAddress()
+{
+    if (!m_lineEdit->text().isEmpty())
+        emit addressEntered(m_lineEdit->text());
+}
 
-signals:
-    void menuClicked();
-    void backClicked();
-    void forwardClicked();
-    void closeClicked();
+void AddressBar::resizeEvent(QResizeEvent *event)
+{
+    int x, y, w, h;
 
-protected:
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+    m_toolButton->adjustSize();
+    x = width() - m_toolButton->width();
+    y = 0;
+    w = m_toolButton->width();
+    h = height() - 1;
+    m_toolButton->setGeometry(x, y, w, h);
+    m_toolButton->show();
 
-private:
-    QPixmap menuPixmap;
-    QPixmap backPixmap;
-    QPixmap forwardPixmap;
-    QPixmap closePixmap;
-};
+    x = 0;
+    y = 0;
+    w = width() - m_toolButton->width();
+    h = height() - 1;
+    m_lineEdit->setGeometry(x, y, w, h);
+    m_lineEdit->show();
+}
 
-#endif // CONTROLSTRIP_H
+void AddressBar::focusInEvent(QFocusEvent *event)
+{
+    m_lineEdit->setFocus();
+    QWidget::focusInEvent(event);
+}

@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,26 +39,28 @@
 **
 ****************************************************************************/
 
-#ifndef BOOKMARKSVIEW_H
-#define BOOKMARKSVIEW_H
+#ifndef WEBVIEW_H
+#define WEBVIEW_H
 
-#include <QWidget>
+#include <QWebView>
+#include <QTime>
 
-class QListWidgetItem;
-class QUrl;
-
-class BookmarksView : public QWidget
+class WebView : public QWebView
 {
     Q_OBJECT
-
 public:
-    BookmarksView(QWidget *parent = 0);
+    WebView(QWidget *parent = 0);
 
-signals:
-    void urlSelected(const QUrl &url);
+protected:
+    void paintEvent(QPaintEvent *event);
 
 private slots:
-    void activate(QListWidgetItem *item);
+    void newPageLoading();
+    void pageLoaded(bool ok);
+
+private:
+    QTime loadingTime;
+    bool inLoading;
 };
 
-#endif // BOOKMARKSVIEW_H
+#endif // WEBVIEW_H

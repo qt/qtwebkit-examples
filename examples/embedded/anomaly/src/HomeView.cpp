@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,44 +39,38 @@
 **
 ****************************************************************************/
 
-#include "ZoomStrip.h"
+#include "HomeView.h"
 
 #include <QtCore>
 #include <QtGui>
 
-ZoomStrip::ZoomStrip(QWidget *parent)
+#include "AddressBar.h"
+#include "BookmarksView.h"
+
+HomeView::HomeView(QWidget *parent)
     : QWidget(parent)
+    , m_addressBar(0)
 {
-    zoomInPixmap.load(":/images/list-add.png");
-    zoomOutPixmap.load(":/images/list-remove.png");
+    m_addressBar = new AddressBar(parent);
+    connect(m_addressBar, SIGNAL(addressEntered(QString)), SLOT(gotoAddress(QString)));
+
+    m_bookmarks = new BookmarksView(parent);
+    connect(m_bookmarks, SIGNAL(urlSelected(QUrl)), SIGNAL(urlActivated(QUrl)));
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(4);
+    layout->setSpacing(4);
+    layout->addWidget(m_addressBar);
+    layout->addWidget(m_bookmarks);
 }
 
-QSize ZoomStrip::sizeHint() const
+void HomeView::gotoAddress(const QString &address)
 {
-    return minimumSizeHint();
+    emit addressEntered(address);
 }
 
-QSize ZoomStrip::minimumSizeHint() const
+void HomeView::focusInEvent(QFocusEvent *event)
 {
-    return QSize(48, 96);
-}
-
-void ZoomStrip::mousePressEvent(QMouseEvent *event)
-{
-    if (event->pos().y() < height() / 2)
-        emit zoomInClicked();
-    else
-        emit zoomOutClicked();
-}
-
-void ZoomStrip::paintEvent(QPaintEvent *event)
-{
-    int w = width();
-    int s = (w - zoomInPixmap.width()) / 2;
-
-    QPainter p(this);
-    p.fillRect(event->rect(), QColor(128, 128, 128, 128));
-    p.drawPixmap(s, s, zoomInPixmap);
-    p.drawPixmap(s, s + w, zoomOutPixmap);
-    p.end();
+    m_addressBar->setFocus();
+    QWidget::focusInEvent(event);
 }

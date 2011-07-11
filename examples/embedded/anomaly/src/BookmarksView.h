@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 
-#ifndef BROWSERVIEW_H
-#define BROWSERVIEW_H
+#ifndef BOOKMARKSVIEW_H
+#define BOOKMARKSVIEW_H
 
 #include <QWidget>
-#include <QVector>
 
+class QListWidgetItem;
 class QUrl;
-class QWebView;
-class TitleBar;
-class ControlStrip;
-class WebView;
-class ZoomStrip;
 
-class BrowserView : public QWidget
+class BookmarksView : public QWidget
 {
     Q_OBJECT
 
 public:
-    BrowserView(QWidget *parent = 0);
-
-public slots:
-    void navigate(const QUrl &url);
-    void zoomIn();
-    void zoomOut();
-
-private slots:
-    void initialize();
-    void start();
-    void setProgress(int percent);
-    void finish(bool);
-    void updateTitleBar();
+    BookmarksView(QWidget *parent = 0);
 
 signals:
-    void menuButtonClicked();
+    void urlSelected(const QUrl &url);
 
-protected:
-    void resizeEvent(QResizeEvent *event);
-
-private:
-    TitleBar *m_titleBar;
-    WebView *m_webView;
-    ZoomStrip *m_zoomStrip;
-    ControlStrip *m_controlStrip;
-    int m_progress;
-    int m_currentZoom;
-    QVector<int> m_zoomLevels;
+private slots:
+    void activate(QListWidgetItem *item);
 };
 
-#endif // BROWSERVIEW_H
-
+#endif // BOOKMARKSVIEW_H

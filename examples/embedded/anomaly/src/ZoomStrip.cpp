@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,55 +39,44 @@
 **
 ****************************************************************************/
 
-#include "AddressBar.h"
+#include "ZoomStrip.h"
 
 #include <QtCore>
 #include <QtGui>
 
-AddressBar::AddressBar(QWidget *parent)
+ZoomStrip::ZoomStrip(QWidget *parent)
     : QWidget(parent)
 {
-    m_lineEdit = new QLineEdit(parent);
-    m_lineEdit->setPlaceholderText("Enter address or search terms");
-    connect(m_lineEdit, SIGNAL(returnPressed()), SLOT(processAddress()));
-    m_toolButton = new QToolButton(parent);
-    m_toolButton->setText("Go");
-    connect(m_toolButton, SIGNAL(clicked()), SLOT(processAddress()));
+    zoomInPixmap.load(":/images/list-add.png");
+    zoomOutPixmap.load(":/images/list-remove.png");
 }
 
-QSize AddressBar::sizeHint() const
+QSize ZoomStrip::sizeHint() const
 {
-    return m_lineEdit->sizeHint();
+    return minimumSizeHint();
 }
 
-void AddressBar::processAddress()
+QSize ZoomStrip::minimumSizeHint() const
 {
-    if (!m_lineEdit->text().isEmpty())
-        emit addressEntered(m_lineEdit->text());
+    return QSize(48, 96);
 }
 
-void AddressBar::resizeEvent(QResizeEvent *event)
+void ZoomStrip::mousePressEvent(QMouseEvent *event)
 {
-    int x, y, w, h;
-
-    m_toolButton->adjustSize();
-    x = width() - m_toolButton->width();
-    y = 0;
-    w = m_toolButton->width();
-    h = height() - 1;
-    m_toolButton->setGeometry(x, y, w, h);
-    m_toolButton->show();
-
-    x = 0;
-    y = 0;
-    w = width() - m_toolButton->width();
-    h = height() - 1;
-    m_lineEdit->setGeometry(x, y, w, h);
-    m_lineEdit->show();
+    if (event->pos().y() < height() / 2)
+        emit zoomInClicked();
+    else
+        emit zoomOutClicked();
 }
 
-void AddressBar::focusInEvent(QFocusEvent *event)
+void ZoomStrip::paintEvent(QPaintEvent *event)
 {
-    m_lineEdit->setFocus();
-    QWidget::focusInEvent(event);
+    int w = width();
+    int s = (w - zoomInPixmap.width()) / 2;
+
+    QPainter p(this);
+    p.fillRect(event->rect(), QColor(128, 128, 128, 128));
+    p.drawPixmap(s, s, zoomInPixmap);
+    p.drawPixmap(s, s + w, zoomOutPixmap);
+    p.end();
 }

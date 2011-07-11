@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,38 +39,32 @@
 **
 ****************************************************************************/
 
-#include "HomeView.h"
+#ifndef ZOOMSTRIP_H
+#define ZOOMSTRIP_H
 
-#include <QtCore>
-#include <QtGui>
+#include <QWidget>
 
-#include "AddressBar.h"
-#include "BookmarksView.h"
-
-HomeView::HomeView(QWidget *parent)
-    : QWidget(parent)
-    , m_addressBar(0)
+class ZoomStrip : public QWidget
 {
-    m_addressBar = new AddressBar(parent);
-    connect(m_addressBar, SIGNAL(addressEntered(QString)), SLOT(gotoAddress(QString)));
+    Q_OBJECT
 
-    m_bookmarks = new BookmarksView(parent);
-    connect(m_bookmarks, SIGNAL(urlSelected(QUrl)), SIGNAL(urlActivated(QUrl)));
+public:
+    ZoomStrip(QWidget *parent = 0);
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(4);
-    layout->setSpacing(4);
-    layout->addWidget(m_addressBar);
-    layout->addWidget(m_bookmarks);
-}
+    QSize sizeHint() const;
+    QSize minimumSizeHint() const;
 
-void HomeView::gotoAddress(const QString &address)
-{
-    emit addressEntered(address);
-}
+signals:
+    void zoomInClicked();
+    void zoomOutClicked();
 
-void HomeView::focusInEvent(QFocusEvent *event)
-{
-    m_addressBar->setFocus();
-    QWidget::focusInEvent(event);
-}
+protected:
+    void paintEvent(QPaintEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+
+private:
+    QPixmap zoomInPixmap;
+    QPixmap zoomOutPixmap;
+};
+
+#endif // ZOOMSTRIP_H

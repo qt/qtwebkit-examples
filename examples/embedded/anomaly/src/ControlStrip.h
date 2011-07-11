@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,32 +39,36 @@
 **
 ****************************************************************************/
 
-#include "BookmarksView.h"
+#ifndef CONTROLSTRIP_H
+#define CONTROLSTRIP_H
 
-#include <QtGui>
+#include <QWidget>
 
-BookmarksView::BookmarksView(QWidget *parent)
-    : QWidget(parent)
+class ControlStrip : public QWidget
 {
-    QListWidget *m_iconView = new QListWidget(this);
-    connect(m_iconView, SIGNAL(itemActivated(QListWidgetItem*)), SLOT(activate(QListWidgetItem*)));
+    Q_OBJECT
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    setLayout(layout);
-    layout->addWidget(m_iconView);
+public:
+    ControlStrip(QWidget *parent = 0);
 
-    m_iconView->addItem("www.google.com");
-    m_iconView->addItem("qt.nokia.com/doc/4.5");
-    m_iconView->addItem("news.bbc.co.uk/2/mobile/default.stm");
-    m_iconView->addItem("mobile.wikipedia.org");
-    m_iconView->addItem("qt.nokia.com");
-    m_iconView->addItem("en.wikipedia.org");
+    QSize sizeHint() const;
+    QSize minimumSizeHint() const;
 
-    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-}
+signals:
+    void menuClicked();
+    void backClicked();
+    void forwardClicked();
+    void closeClicked();
 
-void BookmarksView::activate(QListWidgetItem *item)
-{
-    QUrl url = item->text().prepend("http://");
-    emit urlSelected(url);
-}
+protected:
+    void paintEvent(QPaintEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+
+private:
+    QPixmap menuPixmap;
+    QPixmap backPixmap;
+    QPixmap forwardPixmap;
+    QPixmap closePixmap;
+};
+
+#endif // CONTROLSTRIP_H

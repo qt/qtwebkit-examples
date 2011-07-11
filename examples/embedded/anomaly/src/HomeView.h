@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,36 +39,36 @@
 **
 ****************************************************************************/
 
-#include <QtCore>
-#include <QtGui>
-#include <QtWebKit>
+#ifndef HOMEVIEW_H
+#define HOMEVIEW_H
 
-#include "BrowserWindow.h"
+#include <QWidget>
 
-int main(int argc, char *argv[])
+class QUrl;
+
+class AddressBar;
+class BookmarksView;
+
+class HomeView : public QWidget
 {
-#if !defined(Q_WS_S60)
-    QApplication::setGraphicsSystem("raster");
-#endif
+    Q_OBJECT
 
-    QApplication app(argc, argv);
+public:
+    HomeView(QWidget *parent);
 
-    app.setApplicationName("Anomaly");
-    app.setApplicationVersion("0.0.0");
+signals:
+    void urlActivated(const QUrl &url);
+    void addressEntered(const QString &address);
 
-    BrowserWindow window;
-#ifdef Q_OS_SYMBIAN
-    window.showFullScreen();
-    QWebSettings::globalSettings()->setObjectCacheCapacities(128*1024, 1024*1024, 1024*1024);
-    QWebSettings::globalSettings()->setMaximumPagesInCache(3);
-#else
-    window.resize(360, 640);
-    window.show();
-    app.setStyle("windows");
-#endif
+private slots:
+    void gotoAddress(const QString &address);
 
-#ifdef QT_KEYPAD_NAVIGATION
-    QApplication::setNavigationMode(Qt::NavigationModeCursorAuto);
-#endif
-    return app.exec();
-}
+protected:
+    void focusInEvent(QFocusEvent *event);
+
+private:
+    AddressBar *m_addressBar;
+    BookmarksView *m_bookmarks;
+};
+
+#endif // HOMEVIEW_H

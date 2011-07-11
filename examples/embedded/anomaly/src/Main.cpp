@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,28 +39,36 @@
 **
 ****************************************************************************/
 
-#ifndef WEBVIEW_H
-#define WEBVIEW_H
+#include <QtCore>
+#include <QtGui>
+#include <QtWebKit>
 
-#include <QWebView>
-#include <QTime>
+#include "BrowserWindow.h"
 
-class WebView : public QWebView
+int main(int argc, char *argv[])
 {
-    Q_OBJECT
-public:
-    WebView(QWidget *parent = 0);
+#if !defined(Q_WS_S60)
+    QApplication::setGraphicsSystem("raster");
+#endif
 
-protected:
-    void paintEvent(QPaintEvent *event);
+    QApplication app(argc, argv);
 
-private slots:
-    void newPageLoading();
-    void pageLoaded(bool ok);
+    app.setApplicationName("Anomaly");
+    app.setApplicationVersion("0.0.0");
 
-private:
-    QTime loadingTime;
-    bool inLoading;
-};
+    BrowserWindow window;
+#ifdef Q_OS_SYMBIAN
+    window.showFullScreen();
+    QWebSettings::globalSettings()->setObjectCacheCapacities(128*1024, 1024*1024, 1024*1024);
+    QWebSettings::globalSettings()->setMaximumPagesInCache(3);
+#else
+    window.resize(360, 640);
+    window.show();
+    app.setStyle("windows");
+#endif
 
-#endif // WEBVIEW_H
+#ifdef QT_KEYPAD_NAVIGATION
+    QApplication::setNavigationMode(Qt::NavigationModeCursorAuto);
+#endif
+    return app.exec();
+}

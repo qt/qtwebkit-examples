@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,32 +39,32 @@
 **
 ****************************************************************************/
 
-#ifndef ZOOMSTRIP_H
-#define ZOOMSTRIP_H
+#ifndef TITLEBAR_H
+#define TITLEBAR_H
 
 #include <QWidget>
 
-class ZoomStrip : public QWidget
+class TitleBar : public QWidget
 {
     Q_OBJECT
 
 public:
-    ZoomStrip(QWidget *parent = 0);
+    TitleBar(QWidget *parent = 0);
+
+    void setHost(const QString &host);
+    void setTitle(const QString &title);
+    void setProgress(int percent);
 
     QSize sizeHint() const;
     QSize minimumSizeHint() const;
 
-signals:
-    void zoomInClicked();
-    void zoomOutClicked();
-
 protected:
     void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
 
 private:
-    QPixmap zoomInPixmap;
-    QPixmap zoomOutPixmap;
+    QString m_host;
+    QString m_title;
+    int m_progress;
 };
 
-#endif // ZOOMSTRIP_H
+#endif // TITLEBAR_H

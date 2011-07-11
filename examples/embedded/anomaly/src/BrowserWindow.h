@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,32 +39,45 @@
 **
 ****************************************************************************/
 
-#ifndef TITLEBAR_H
-#define TITLEBAR_H
+#ifndef BROWSERWINDOW_H
+#define BROWSERWINDOW_H
 
 #include <QWidget>
+class QPropertyAnimation;
+class QUrl;
 
-class TitleBar : public QWidget
+class BrowserView;
+class HomeView;
+
+class BrowserWindow : public QWidget
 {
     Q_OBJECT
+    Q_PROPERTY(qreal slideValue READ slideValue WRITE setSlideValue)
 
 public:
-    TitleBar(QWidget *parent = 0);
+    BrowserWindow();
 
-    void setHost(const QString &host);
-    void setTitle(const QString &title);
-    void setProgress(int percent);
+private slots:
+    void navigate(const QUrl &url);
+    void gotoAddress(const QString &address);
+    void animationFinished();
 
-    QSize sizeHint() const;
-    QSize minimumSizeHint() const;
+public slots:
+    void showBrowserView();
+    void showHomeView();
 
 protected:
-    void paintEvent(QPaintEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void resizeEvent(QResizeEvent *event);
 
 private:
-    QString m_host;
-    QString m_title;
-    int m_progress;
+    void setSlideValue(qreal);
+    qreal slideValue() const;
+
+    QWidget *m_slidingSurface;
+    HomeView *m_homeView;
+    BrowserView *m_browserView;
+    QPropertyAnimation *m_animation;
 };
 
-#endif // TITLEBAR_H
+#endif // BROWSERWINDOW_H

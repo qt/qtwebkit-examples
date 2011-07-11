@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,45 +39,32 @@
 **
 ****************************************************************************/
 
-#ifndef BROWSERWINDOW_H
-#define BROWSERWINDOW_H
+#include "BookmarksView.h"
 
-#include <QWidget>
-class QPropertyAnimation;
-class QUrl;
+#include <QtGui>
 
-class BrowserView;
-class HomeView;
-
-class BrowserWindow : public QWidget
+BookmarksView::BookmarksView(QWidget *parent)
+    : QWidget(parent)
 {
-    Q_OBJECT
-    Q_PROPERTY(qreal slideValue READ slideValue WRITE setSlideValue)
+    QListWidget *m_iconView = new QListWidget(this);
+    connect(m_iconView, SIGNAL(itemActivated(QListWidgetItem*)), SLOT(activate(QListWidgetItem*)));
 
-public:
-    BrowserWindow();
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
+    layout->addWidget(m_iconView);
 
-private slots:
-    void navigate(const QUrl &url);
-    void gotoAddress(const QString &address);
-    void animationFinished();
+    m_iconView->addItem("www.google.com");
+    m_iconView->addItem("qt.nokia.com/doc/4.5");
+    m_iconView->addItem("news.bbc.co.uk/2/mobile/default.stm");
+    m_iconView->addItem("mobile.wikipedia.org");
+    m_iconView->addItem("qt.nokia.com");
+    m_iconView->addItem("en.wikipedia.org");
 
-public slots:
-    void showBrowserView();
-    void showHomeView();
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+}
 
-protected:
-    void keyReleaseEvent(QKeyEvent *event);
-    void resizeEvent(QResizeEvent *event);
-
-private:
-    void setSlideValue(qreal);
-    qreal slideValue() const;
-
-    QWidget *m_slidingSurface;
-    HomeView *m_homeView;
-    BrowserView *m_browserView;
-    QPropertyAnimation *m_animation;
-};
-
-#endif // BROWSERWINDOW_H
+void BookmarksView::activate(QListWidgetItem *item)
+{
+    QUrl url = item->text().prepend("http://");
+    emit urlSelected(url);
+}

@@ -4,7 +4,7 @@
 ** All rights reserved.
 ** Contact: Nokia Corporation (qt-info@nokia.com)
 **
-** This file is part of the demos of the Qt Toolkit.
+** This file is part of the examples of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** No Commercial Usage
@@ -39,42 +39,53 @@
 **
 ****************************************************************************/
 
-#include "webview.h"
+#ifndef BROWSERVIEW_H
+#define BROWSERVIEW_H
 
-#include <QPaintEvent>
-#include <QWebFrame>
+#include <QWidget>
+#include <QVector>
 
-WebView::WebView(QWidget *parent)
-    : QWebView(parent)
-    , inLoading(false)
+class QUrl;
+class QWebView;
+class TitleBar;
+class ControlStrip;
+class WebView;
+class ZoomStrip;
+
+class BrowserView : public QWidget
 {
-    connect(this, SIGNAL(loadStarted()), this, SLOT(newPageLoading()));
-    connect(this, SIGNAL(loadFinished(bool)), this, SLOT(pageLoaded(bool)));
-    page()->setPreferredContentsSize(QSize(1024, 768));
-}
+    Q_OBJECT
 
-void WebView::paintEvent(QPaintEvent *event)
-{
-    if (inLoading && loadingTime.elapsed() < 750) {
-        QPainter painter(this);
-        painter.setBrush(Qt::white);
-        painter.setPen(Qt::NoPen);
-        foreach (const QRect &rect, event->region().rects()) {
-            painter.drawRect(rect);
-        }
-    } else {
-        QWebView::paintEvent(event);
-    }
-}
+public:
+    BrowserView(QWidget *parent = 0);
 
-void WebView::newPageLoading()
-{
-    inLoading = true;
-    loadingTime.start();
-}
+public slots:
+    void navigate(const QUrl &url);
+    void zoomIn();
+    void zoomOut();
 
-void WebView::pageLoaded(bool)
-{
-    inLoading = false;
-    update();
-}
+private slots:
+    void initialize();
+    void start();
+    void setProgress(int percent);
+    void finish(bool);
+    void updateTitleBar();
+
+signals:
+    void menuButtonClicked();
+
+protected:
+    void resizeEvent(QResizeEvent *event);
+
+private:
+    TitleBar *m_titleBar;
+    WebView *m_webView;
+    ZoomStrip *m_zoomStrip;
+    ControlStrip *m_controlStrip;
+    int m_progress;
+    int m_currentZoom;
+    QVector<int> m_zoomLevels;
+};
+
+#endif // BROWSERVIEW_H
+
