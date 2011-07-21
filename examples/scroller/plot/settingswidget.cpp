@@ -262,7 +262,7 @@ private slots:
                 break;
             }
             case QVariant::Int: {
-                m_slider->setValue(qRound((m_value.toInt() * m_item->scaling - m_item->min.toInt()) / m_item->step.toInt()));
+                m_slider->setValue((m_value.toInt() * m_item->scaling - m_item->min.toInt()) / m_item->step.toInt());
                 break;
             }
             default: break;
