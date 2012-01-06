@@ -42,7 +42,7 @@
 #include "ControlStrip.h"
 
 #include <QtCore>
-#include <QtGui>
+#include <QtWidgets>
 
 ControlStrip::ControlStrip(QWidget *parent)
     : QWidget(parent)

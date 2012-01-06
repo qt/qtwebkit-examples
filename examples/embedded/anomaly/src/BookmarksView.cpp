@@ -41,7 +41,7 @@
 
 #include "BookmarksView.h"
 
-#include <QtGui>
+#include <QtWidgets>
 
 BookmarksView::BookmarksView(QWidget *parent)
     : QWidget(parent)

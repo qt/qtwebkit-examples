@@ -42,7 +42,7 @@
 #ifndef EDITTABLEVIEW_H
 #define EDITTABLEVIEW_H
 
-#include <QtGui/QTableView>
+#include <QtWidgets/QTableView>
 
 class EditTableView : public QTableView
 {

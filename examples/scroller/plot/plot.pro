@@ -4,7 +4,7 @@ SOURCES       = settingswidget.cpp \
                 plotwidget.cpp \
                 main.cpp
 
-QT += webkit
+QT += webkit widgets
 
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/scroller/plot

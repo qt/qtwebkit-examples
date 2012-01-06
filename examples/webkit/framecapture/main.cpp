@@ -41,7 +41,7 @@
 #include "framecapture.h"
 
 #include <iostream>
-#include <QtGui>
+#include <QtWidgets>
 
 int main(int argc, char * argv[])
 {

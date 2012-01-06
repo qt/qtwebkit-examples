@@ -42,7 +42,7 @@
 #define IMAGEANALYZER_H
 
 #include <QFutureWatcher>
-#include <QtGui>
+#include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
 class QNetworkAccessManager;

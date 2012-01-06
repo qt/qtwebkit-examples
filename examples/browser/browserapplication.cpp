@@ -59,7 +59,7 @@
 
 #include <QtGui/QDesktopServices>
 #include <QtGui/QFileOpenEvent>
-#include <QtGui/QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 #include <QtNetwork/QLocalServer>
 #include <QtNetwork/QLocalSocket>
@@ -173,7 +173,7 @@ BrowserApplication *BrowserApplication::instance()
 }
 
 #if defined(Q_WS_MAC)
-#include <QtGui/QMessageBox>
+#include <QtWidgets/QMessageBox>
 void BrowserApplication::quitBrowser()
 {
     clean();

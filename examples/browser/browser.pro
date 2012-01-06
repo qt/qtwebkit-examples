@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = browser
-QT += webkit network
+QT += webkit network widgets printsupport
 
 CONFIG += qt warn_on
 contains(QT_BUILD_PARTS, tools):!embedded: CONFIG += uitools

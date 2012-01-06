@@ -5,7 +5,7 @@ SOURCES = imageanalyzer.cpp \
 	main.cpp \
 	mainwindow.cpp
 
-QT += network webkit
+QT += network webkit widgets
 
 RESOURCES = resources/imageanalyzer.qrc
 

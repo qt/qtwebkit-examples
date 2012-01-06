@@ -45,9 +45,9 @@
 #include <QtCore/QSettings>
 #include <QtCore/QUrl>
 
-#include <QtGui/QCompleter>
-#include <QtGui/QMenu>
-#include <QtGui/QStringListModel>
+#include <QtWidgets/QCompleter>
+#include <QtWidgets/QMenu>
+#include <QtCore/QStringListModel>
 
 #include <QtWebKit/QWebSettings>
 

@@ -44,8 +44,8 @@
 
 #include "urllineedit.h"
 
-#include <QtGui/QLineEdit>
-#include <QtGui/QAbstractButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QAbstractButton>
 
 QT_BEGIN_NAMESPACE
 class QMenu;

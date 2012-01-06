@@ -42,7 +42,7 @@
 #include "ZoomStrip.h"
 
 #include <QtCore>
-#include <QtGui>
+#include <QtWidgets>
 
 ZoomStrip::ZoomStrip(QWidget *parent)
     : QWidget(parent)

@@ -41,7 +41,7 @@
 #ifndef FORMEXTRACTOR_H
 #define FORMEXTRACTOR_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 #include <QWebFrame>
 #include "ui_formextractor.h"
 

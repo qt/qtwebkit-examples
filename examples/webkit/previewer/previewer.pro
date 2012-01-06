@@ -1,4 +1,4 @@
-QT      +=  webkit network
+QT      +=  webkit network widgets
 HEADERS =   previewer.h \
             mainwindow.h
 SOURCES =   main.cpp \

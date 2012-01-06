@@ -55,17 +55,17 @@
 
 #include <QtCore/QSettings>
 
-#include <QtGui/QDesktopWidget>
-#include <QtGui/QFileDialog>
-#include <QtGui/QPlainTextEdit>
-#include <QtGui/QPrintDialog>
-#include <QtGui/QPrintPreviewDialog>
-#include <QtGui/QPrinter>
-#include <QtGui/QMenuBar>
-#include <QtGui/QMessageBox>
-#include <QtGui/QStatusBar>
-#include <QtGui/QToolBar>
-#include <QtGui/QInputDialog>
+#include <QtWidgets/QDesktopWidget>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtPrintSupport/QPrintPreviewDialog>
+#include <QtPrintSupport/QPrinter>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QInputDialog>
 
 #include <QtWebKit/QWebFrame>
 #include <QtWebKit/QWebHistory>

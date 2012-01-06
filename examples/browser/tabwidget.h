@@ -42,9 +42,9 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <QtGui/QTabBar>
+#include <QtWidgets/QTabBar>
 
-#include <QtGui/QShortcut>
+#include <QtWidgets/QShortcut>
 /*
     Tab bar with a few more features such as a context menu and shortcuts
  */
@@ -120,7 +120,7 @@ private:
 };
 
 #include <QtCore/QUrl>
-#include <QtGui/QTabWidget>
+#include <QtWidgets/QTabWidget>
 QT_BEGIN_NAMESPACE
 class QCompleter;
 class QLineEdit;

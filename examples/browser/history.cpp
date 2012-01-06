@@ -56,8 +56,8 @@
 
 #include <QtGui/QClipboard>
 #include <QtGui/QDesktopServices>
-#include <QtGui/QHeaderView>
-#include <QtGui/QStyle>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QStyle>
 
 #include <QtWebKit/QWebHistoryInterface>
 #include <QtWebKit/QWebSettings>

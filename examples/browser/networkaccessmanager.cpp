@@ -49,9 +49,9 @@
 #include <QtCore/QSettings>
 
 #include <QtGui/QDesktopServices>
-#include <QtGui/QDialog>
-#include <QtGui/QMessageBox>
-#include <QtGui/QStyle>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QStyle>
 #include <QtGui/QTextDocument>
 
 #include <QtNetwork/QAuthenticator>

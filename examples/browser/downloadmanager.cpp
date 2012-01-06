@@ -51,9 +51,9 @@
 #include <QtCore/QSettings>
 
 #include <QtGui/QDesktopServices>
-#include <QtGui/QFileDialog>
-#include <QtGui/QHeaderView>
-#include <QtGui/QFileIconProvider>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QFileIconProvider>
 
 #include <QtCore/QDebug>
 

@@ -48,8 +48,8 @@
 #include "webview.h"
 
 #include <QtGui/QClipboard>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMessageBox>
 #include <QtGui/QMouseEvent>
 
 #include <QtWebKit/QWebHitTestResult>

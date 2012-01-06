@@ -43,9 +43,9 @@
 
 #include <QtGui/QPainter>
 #include <QtGui/QMouseEvent>
-#include <QtGui/QMenu>
-#include <QtGui/QStyle>
-#include <QtGui/QStyleOptionFrameV2>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QStyle>
+#include <QtWidgets/QStyleOptionFrameV2>
 
 ClearButton::ClearButton(QWidget *parent)
   : QAbstractButton(parent)

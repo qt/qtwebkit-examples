@@ -42,12 +42,12 @@
 #ifndef BROWSERAPPLICATION_H
 #define BROWSERAPPLICATION_H
 
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 
 #include <QtCore/QUrl>
 #include <QtCore/QPointer>
 
-#include <QtGui/QIcon>
+#include <QtWidgets/QIcon>
 
 QT_BEGIN_NAMESPACE
 class QLocalServer;

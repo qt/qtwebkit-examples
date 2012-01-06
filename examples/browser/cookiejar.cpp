@@ -50,13 +50,13 @@
 #include <QtCore/QSettings>
 #include <QtCore/QUrl>
 
-#include <QtGui/QCompleter>
+#include <QtWidgets/QCompleter>
 #include <QtGui/QDesktopServices>
 #include <QtGui/QFont>
 #include <QtGui/QFontMetrics>
-#include <QtGui/QHeaderView>
+#include <QtWidgets/QHeaderView>
 #include <QtGui/QKeyEvent>
-#include <QtGui/QSortFilterProxyModel>
+#include <QtCore/QSortFilterProxyModel>
 
 #include <QtWebKit/QWebSettings>
 

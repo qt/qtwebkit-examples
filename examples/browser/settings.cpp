@@ -49,7 +49,7 @@
 #include "webview.h"
 
 #include <QtCore/QSettings>
-#include <QtGui/QtGui>
+#include <QtWidgets/QtWidgets>
 #include <QtWebKit/QtWebKit>
 
 SettingsDialog::SettingsDialog(QWidget *parent)

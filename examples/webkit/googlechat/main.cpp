@@ -38,7 +38,7 @@
 **
 ****************************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QNetworkProxyFactory>
 #include "googlechat.h"
 

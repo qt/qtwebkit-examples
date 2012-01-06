@@ -42,7 +42,7 @@
 #include "BrowserWindow.h"
 
 #include <QtCore>
-#include <QtGui>
+#include <QtWidgets>
 #include <QPropertyAnimation>
 #include <QResizeEvent>
 

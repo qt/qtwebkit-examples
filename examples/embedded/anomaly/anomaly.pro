@@ -1,5 +1,6 @@
 QT += network \
-    webkit
+    webkit \
+    widgets
 HEADERS += src/BrowserWindow.h \
     src/BrowserView.h \
     src/TitleBar.h \
