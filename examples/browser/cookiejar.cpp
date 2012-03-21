@@ -57,6 +57,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtGui/QKeyEvent>
 #include <QtCore/QSortFilterProxyModel>
+#include <QtNetwork/QNetworkCookie>
 
 #include <QtWebKit/QWebSettings>
 

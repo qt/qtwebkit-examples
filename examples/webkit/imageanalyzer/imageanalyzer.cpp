@@ -43,6 +43,7 @@
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
+#include <QtConcurrentMap>
 #include "imageanalyzer.h"
 
 /*!
