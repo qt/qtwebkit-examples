@@ -47,7 +47,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QPointer>
 
-#include <QtWidgets/QIcon>
+#include <QtGui/QIcon>
 
 QT_BEGIN_NAMESPACE
 class QLocalServer;

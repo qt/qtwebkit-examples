@@ -43,7 +43,7 @@
 #define BROWSERMAINWINDOW_H
 
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QIcon>
+#include <QtGui/QIcon>
 #include <QtCore/QUrl>
 
 class AutoSaver;

@@ -52,9 +52,9 @@
 
 #include <QtGui/QDesktopServices>
 #include <QtGui/QDragEnterEvent>
+#include <QtGui/QIcon>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QIcon>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QToolButton>
 

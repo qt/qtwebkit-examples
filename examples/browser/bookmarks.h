@@ -147,7 +147,6 @@ private:
 /*!
     BookmarksModel is a QAbstractItemModel wrapper around the BookmarkManager
   */
-#include <QtWidgets/QIcon>
 class BookmarksModel : public QAbstractItemModel
 {
     Q_OBJECT
