@@ -44,8 +44,10 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
 class QLineEdit;
 class QToolButton;
+QT_END_NAMESPACE
 
 class AddressBar : public QWidget
 {

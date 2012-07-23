@@ -45,7 +45,10 @@
 #include <QWidget>
 #include <QVector>
 
+QT_BEGIN_NAMESPACE
 class QUrl;
+QT_END_NAMESPACE
+
 class QWebView;
 class TitleBar;
 class ControlStrip;

@@ -44,8 +44,10 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
 class QListWidgetItem;
 class QUrl;
+QT_END_NAMESPACE
 
 class BookmarksView : public QWidget
 {

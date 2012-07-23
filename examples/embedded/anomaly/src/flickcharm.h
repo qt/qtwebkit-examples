@@ -44,8 +44,11 @@
 
 #include <QObject>
 
-class FlickCharmPrivate;
+QT_BEGIN_NAMESPACE
 class QWidget;
+QT_END_NAMESPACE
+
+class FlickCharmPrivate;
 
 class FlickCharm: public QObject
 {

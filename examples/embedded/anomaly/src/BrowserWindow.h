@@ -43,8 +43,11 @@
 #define BROWSERWINDOW_H
 
 #include <QWidget>
+
+QT_BEGIN_NAMESPACE
 class QPropertyAnimation;
 class QUrl;
+QT_END_NAMESPACE
 
 class BrowserView;
 class HomeView;

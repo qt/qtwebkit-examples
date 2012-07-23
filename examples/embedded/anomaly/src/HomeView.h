@@ -44,7 +44,9 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
 class QUrl;
+QT_END_NAMESPACE
 
 class AddressBar;
 class BookmarksView;
