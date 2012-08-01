@@ -11,5 +11,4 @@
     "qtsvg" => "refs/heads/master",
     "qtxmlpatterns" => "refs/heads/master",
     "qtdeclarative" => "refs/heads/master",
-    "qtphonon" => "refs/heads/master",
 );
