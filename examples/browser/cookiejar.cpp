@@ -132,7 +132,7 @@ void CookieJar::load()
         return;
     // load cookies and exceptions
     qRegisterMetaTypeStreamOperators<QList<QNetworkCookie> >("QList<QNetworkCookie>");
-    QSettings cookieSettings(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + QLatin1String("/cookies.ini"), QSettings::IniFormat);
+    QSettings cookieSettings(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/cookies.ini"), QSettings::IniFormat);
     setAllCookies(qvariant_cast<QList<QNetworkCookie> >(cookieSettings.value(QLatin1String("cookies"))));
     cookieSettings.beginGroup(QLatin1String("Exceptions"));
     m_exceptions_block = cookieSettings.value(QLatin1String("block")).toStringList();
@@ -174,7 +174,7 @@ void CookieJar::save()
     if (!m_loaded)
         return;
     purgeOldCookies();
-    QString directory = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     if (!QFile::exists(directory)) {
@@ -479,7 +479,8 @@ bool CookieModel::removeRows(int row, int count, const QModelIndex &parent)
 
 void CookieModel::cookiesChanged()
 {
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 CookiesDialog::CookiesDialog(CookieJar *cookieJar, QWidget *parent) : QDialog(parent)
@@ -711,7 +712,8 @@ void CookiesExceptionsDialog::block()
         return;
     m_exceptionsModel->m_blockedCookies.append(domainLineEdit->text());
     m_cookieJar->setBlockedCookies(m_exceptionsModel->m_blockedCookies);
-    m_exceptionsModel->reset();
+    m_exceptionsModel->beginResetModel();
+    m_exceptionsModel->endResetModel();
 }
 
 void CookiesExceptionsDialog::allow()
@@ -720,7 +722,8 @@ void CookiesExceptionsDialog::allow()
         return;
     m_exceptionsModel->m_allowedCookies.append(domainLineEdit->text());
     m_cookieJar->setAllowedCookies(m_exceptionsModel->m_allowedCookies);
-    m_exceptionsModel->reset();
+    m_exceptionsModel->beginResetModel();
+    m_exceptionsModel->endResetModel();
 }
 
 void CookiesExceptionsDialog::allowForSession()
@@ -729,6 +732,7 @@ void CookiesExceptionsDialog::allowForSession()
         return;
     m_exceptionsModel->m_sessionCookies.append(domainLineEdit->text());
     m_cookieJar->setAllowForSessionCookies(m_exceptionsModel->m_sessionCookies);
-    m_exceptionsModel->reset();
+    m_exceptionsModel->beginResetModel();
+    m_exceptionsModel->endResetModel();
 }
 

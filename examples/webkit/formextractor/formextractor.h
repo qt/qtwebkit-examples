@@ -50,7 +50,7 @@ class FormExtractor : public QWidget
     Q_OBJECT
 
 public:
-    FormExtractor(QWidget *parent = 0, Qt::WFlags flags = 0);
+    FormExtractor(QWidget *parent = 0, Qt::WindowFlags flags = 0);
     ~FormExtractor();
 
 public slots:

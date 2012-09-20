@@ -52,7 +52,7 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
 {
     m_network = new QNetworkAccessManager(this);
     m_cache = new QNetworkDiskCache(this);
-    m_cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + "/imageanalyzer");
+    m_cache->setCacheDirectory(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/imageanalyzer");
     m_cache->setMaximumCacheSize(1000000); //set the cache to 10megs
     m_network->setCache(m_cache);
     page()->setNetworkAccessManager(m_network);

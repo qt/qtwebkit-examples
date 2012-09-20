@@ -79,7 +79,7 @@ void SettingsDialog::loadDefaults()
     fixedFont = QFont(fixedFontFamily, fixedFontSize);
     fixedLabel->setText(QString(QLatin1String("%1 %2")).arg(fixedFont.family()).arg(fixedFont.pointSize()));
 
-    downloadsLocation->setText(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation));
+    downloadsLocation->setText(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
 
     enableJavascript->setChecked(defaultSettings->testAttribute(QWebSettings::JavascriptEnabled));
     enablePlugins->setChecked(defaultSettings->testAttribute(QWebSettings::PluginsEnabled));

@@ -239,7 +239,7 @@ void HistoryManager::load()
 {
     loadSettings();
 
-    QFile historyFile(QDesktopServices::storageLocation(QDesktopServices::DataLocation)
+    QFile historyFile(QStandardPaths::writableLocation(QStandardPaths::DataLocation)
         + QLatin1String("/history"));
     if (!historyFile.exists())
         return;
@@ -318,7 +318,7 @@ void HistoryManager::save()
     if (first == m_history.count() - 1)
         saveAll = true;
 
-    QString directory = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     if (!QFile::exists(directory)) {
@@ -380,7 +380,8 @@ HistoryModel::HistoryModel(HistoryManager *history, QObject *parent)
 
 void HistoryModel::historyReset()
 {
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 void HistoryModel::entryAdded()
@@ -786,7 +787,8 @@ QVariant HistoryFilterModel::headerData(int section, Qt::Orientation orientation
 void HistoryFilterModel::sourceReset()
 {
     m_loaded = false;
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 int HistoryFilterModel::rowCount(const QModelIndex &parent) const
@@ -917,8 +919,10 @@ bool HistoryFilterModel::removeRows(int row, int count, const QModelIndex &paren
     connect(sourceModel(), SIGNAL(rowsRemoved(QModelIndex,int,int)),
                 this, SLOT(sourceRowsRemoved(QModelIndex,int,int)));
     m_loaded = false;
-    if (oldCount - count != rowCount())
-        reset();
+    if (oldCount - count != rowCount()) {
+        beginResetModel();
+        endResetModel();
+    }
     return true;
 }
 
@@ -1004,12 +1008,14 @@ void HistoryCompletionModel::setSourceModel(QAbstractItemModel *newSourceModel)
                 this, SLOT(sourceReset()));
     }
 
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 void HistoryCompletionModel::sourceReset()
 {
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 HistoryTreeModel::HistoryTreeModel(QAbstractItemModel *sourceModel, QObject *parent)
@@ -1194,13 +1200,15 @@ void HistoryTreeModel::setSourceModel(QAbstractItemModel *newSourceModel)
                 this, SLOT(sourceRowsRemoved(QModelIndex,int,int)));
     }
 
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 void HistoryTreeModel::sourceReset()
 {
+    beginResetModel();
     m_sourceRowCache.clear();
-    reset();
+    endResetModel();
 }
 
 void HistoryTreeModel::sourceRowsInserted(const QModelIndex &parent, int start, int end)
@@ -1208,8 +1216,9 @@ void HistoryTreeModel::sourceRowsInserted(const QModelIndex &parent, int start, 
     Q_UNUSED(parent); // Avoid warnings when compiling release
     Q_ASSERT(!parent.isValid());
     if (start != 0 || start != end) {
+        beginResetModel();
         m_sourceRowCache.clear();
-        reset();
+        endResetModel();
         return;
     }
 
@@ -1253,8 +1262,9 @@ void HistoryTreeModel::sourceRowsRemoved(const QModelIndex &parent, int start, i
         it = qLowerBound(m_sourceRowCache.begin(), m_sourceRowCache.end(), i);
         // playing it safe
         if (it == m_sourceRowCache.end()) {
+            beginResetModel();
             m_sourceRowCache.clear();
-            reset();
+            endResetModel();
             return;
         }
 

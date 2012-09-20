@@ -42,7 +42,7 @@
 
 #include <QWebElement>
 
-FormExtractor::FormExtractor(QWidget *parent, Qt::WFlags flags)
+FormExtractor::FormExtractor(QWidget *parent, Qt::WindowFlags flags)
     : QWidget(parent, flags)
 {
     ui.setupUi(this);

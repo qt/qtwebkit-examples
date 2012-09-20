@@ -44,6 +44,7 @@
 
 #include <QtCore/QSettings>
 #include <QtCore/QUrl>
+#include <QtCore/QUrlQuery>
 
 #include <QtWidgets/QCompleter>
 #include <QtWidgets/QMenu>
@@ -115,10 +116,12 @@ void ToolbarSearch::searchNow()
     }
 
     QUrl url(QLatin1String("http://www.google.com/search"));
-    url.addQueryItem(QLatin1String("q"), searchText);
-    url.addQueryItem(QLatin1String("ie"), QLatin1String("UTF-8"));
-    url.addQueryItem(QLatin1String("oe"), QLatin1String("UTF-8"));
-    url.addQueryItem(QLatin1String("client"), QLatin1String("qtdemobrowser"));
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem(QLatin1String("q"), searchText);
+    urlQuery.addQueryItem(QLatin1String("ie"), QLatin1String("UTF-8"));
+    urlQuery.addQueryItem(QLatin1String("oe"), QLatin1String("UTF-8"));
+    urlQuery.addQueryItem(QLatin1String("client"), QLatin1String("qtdemobrowser"));
+    url.setQuery(urlQuery);
     emit search(url);
 }
 

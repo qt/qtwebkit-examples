@@ -119,7 +119,7 @@ void DownloadItem::getFileName()
 {
     QSettings settings;
     settings.beginGroup(QLatin1String("downloadmanager"));
-    QString defaultLocation = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+    QString defaultLocation = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString downloadDirectory = settings.value(QLatin1String("downloadDirectory"), defaultLocation).toString();
     if (!downloadDirectory.isEmpty())
         downloadDirectory += QLatin1Char('/');

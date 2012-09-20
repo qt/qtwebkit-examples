@@ -47,10 +47,6 @@
 
 int main(int argc, char *argv[])
 {
-#if !defined(Q_WS_S60)
-    QApplication::setGraphicsSystem("raster");
-#endif
-
     QApplication app(argc, argv);
 
     app.setApplicationName("Anomaly");

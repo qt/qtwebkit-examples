@@ -96,7 +96,7 @@ void BookmarksManager::load()
         return;
     m_loaded = true;
 
-    QString dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     QString bookmarkFile = dir + QLatin1String("/bookmarks.xbel");
     if (!QFile::exists(bookmarkFile))
         bookmarkFile = QLatin1String(":defaultbookmarks.xbel");
@@ -160,7 +160,7 @@ void BookmarksManager::save() const
         return;
 
     XbelWriter writer;
-    QString dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     QString bookmarkFile = dir + QLatin1String("/bookmarks.xbel");
     if (!writer.write(bookmarkFile, m_bookmarkRootNode))
         qWarning() << "BookmarkManager: error saving to" << bookmarkFile;

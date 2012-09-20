@@ -201,7 +201,7 @@ void BrowserApplication::quitBrowser()
  */
 void BrowserApplication::postLaunch()
 {
-    QString directory = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     QWebSettings::setIconDatabasePath(directory);
