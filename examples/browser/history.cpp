@@ -980,7 +980,7 @@ QModelIndex HistoryCompletionModel::index(int row, int column, const QModelIndex
     if (row < 0 || row >= rowCount(parent)
         || column < 0 || column >= columnCount(parent))
         return QModelIndex();
-    return createIndex(row, column, 0);
+    return createIndex(row, column);
 }
 
 QModelIndex HistoryCompletionModel::parent(const QModelIndex &) const
@@ -1130,7 +1130,7 @@ QModelIndex HistoryTreeModel::index(int row, int column, const QModelIndex &pare
         return QModelIndex();
 
     if (!parent.isValid())
-        return createIndex(row, column, 0);
+        return createIndex(row, column);
     return createIndex(row, column, parent.row() + 1);
 }
 
@@ -1139,7 +1139,7 @@ QModelIndex HistoryTreeModel::parent(const QModelIndex &index) const
     int offset = index.internalId();
     if (offset == 0 || !index.isValid())
         return QModelIndex();
-    return createIndex(offset - 1, 0, 0);
+    return createIndex(offset - 1, 0);
 }
 
 bool HistoryTreeModel::hasChildren(const QModelIndex &parent) const
