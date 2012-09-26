@@ -9,6 +9,7 @@ examples/*/*/*[.]app
 !examples/tutorials/*
 !examples/tutorials/*/*
 !examples/ja_JP/*/*
+!examples/qml/*/*
 demos/*/*
 !demos/spectrum/*
 demos/spectrum/bin
