@@ -39,7 +39,7 @@
 ****************************************************************************/
 
 #include <QtWidgets>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 #include "mainwindow.h"
 
 //! [0]

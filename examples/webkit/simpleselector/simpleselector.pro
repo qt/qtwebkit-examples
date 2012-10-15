@@ -1,4 +1,4 @@
-QT       += webkit network widgets
+QT       += webkitwidgets network widgets
 FORMS     = window.ui
 HEADERS   = window.h
 SOURCES   = main.cpp \

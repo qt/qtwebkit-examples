@@ -1,4 +1,4 @@
-QT      += webkit network widgets
+QT      += webkitwidgets network widgets
 
 HEADERS = framecapture.h
 SOURCES = main.cpp \

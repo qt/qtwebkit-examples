@@ -41,7 +41,7 @@
 #ifndef FRAMECAPTURE_H
 #define FRAMECAPTURE_H
 
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 
 class FrameCapture : public QObject
 {

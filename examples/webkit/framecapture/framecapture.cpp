@@ -41,7 +41,6 @@
 #include "framecapture.h"
 
 #include <iostream>
-#include <QtWebKit>
 
 FrameCapture::FrameCapture(): QObject(), m_percent(0)
 {

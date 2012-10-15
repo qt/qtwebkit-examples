@@ -52,7 +52,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QMouseEvent>
 
-#include <QtWebKit/QWebHitTestResult>
+#include <QWebHitTestResult>
 
 #ifndef QT_NO_UITOOLS
 #include <QtUiTools/QUiLoader>

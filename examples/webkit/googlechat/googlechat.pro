@@ -1,4 +1,4 @@
-QT      +=  webkit network widgets
+QT      +=  webkitwidgets network widgets
 HEADERS =   googlechat.h
 SOURCES =   main.cpp \
             googlechat.cpp

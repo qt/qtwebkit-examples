@@ -67,8 +67,8 @@
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QInputDialog>
 
-#include <QtWebKit/QWebFrame>
-#include <QtWebKit/QWebHistory>
+#include <QWebFrame>
+#include <QWebHistory>
 
 #include <QtCore/QDebug>
 

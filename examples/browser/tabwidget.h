@@ -84,7 +84,7 @@ private:
     int m_dragCurrentIndex;
 };
 
-#include <QtWebKit/QWebPage>
+#include <QWebPage>
 
 QT_BEGIN_NAMESPACE
 class QAction;

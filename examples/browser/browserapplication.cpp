@@ -66,7 +66,7 @@
 #include <QtNetwork/QNetworkProxy>
 #include <QtNetwork/QSslSocket>
 
-#include <QtWebKit/QWebSettings>
+#include <QWebSettings>
 
 #include <QtCore/QDebug>
 

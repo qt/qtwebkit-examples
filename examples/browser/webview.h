@@ -42,7 +42,7 @@
 #ifndef WEBVIEW_H
 #define WEBVIEW_H
 
-#include <QtWebKit/QWebView>
+#include <QWebView>
 
 QT_BEGIN_NAMESPACE
 class QAuthenticator;

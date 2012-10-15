@@ -1,6 +1,6 @@
 
 FORMS       += forms/mainwindow.ui
-QT +=       xmlpatterns webkit widgets
+QT +=       xmlpatterns webkitwidgets widgets
 SOURCES     += qobjectxmlmodel.cpp main.cpp mainwindow.cpp ../shared/xmlsyntaxhighlighter.cpp
 HEADERS     += qobjectxmlmodel.h  mainwindow.h ../shared/xmlsyntaxhighlighter.h
 RESOURCES   = queries.qrc

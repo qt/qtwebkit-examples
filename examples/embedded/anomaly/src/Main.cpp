@@ -41,7 +41,7 @@
 
 #include <QtCore>
 #include <QtWidgets>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 
 #include "BrowserWindow.h"
 

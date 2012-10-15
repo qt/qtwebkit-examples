@@ -58,7 +58,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QToolButton>
 
-#include <QtWebKit/QWebSettings>
+#include <QWebSettings>
 
 #include <QtCore/QDebug>
 

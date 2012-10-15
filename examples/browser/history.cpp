@@ -59,8 +59,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QStyle>
 
-#include <QtWebKit/QWebHistoryInterface>
-#include <QtWebKit/QWebSettings>
+#include <QWebHistoryInterface>
+#include <QWebSettings>
 
 #include <QtCore/QDebug>
 

@@ -59,7 +59,7 @@
 #include <QtCore/QSortFilterProxyModel>
 #include <QtNetwork/QNetworkCookie>
 
-#include <QtWebKit/QWebSettings>
+#include <QWebSettings>
 
 #include <QtCore/QDebug>
 

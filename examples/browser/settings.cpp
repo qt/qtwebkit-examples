@@ -50,7 +50,7 @@
 
 #include <QtCore/QSettings>
 #include <QtWidgets/QtWidgets>
-#include <QtWebKit/QtWebKit>
+#include <QtWebKitWidgets>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)

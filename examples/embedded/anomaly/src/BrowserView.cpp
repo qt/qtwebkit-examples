@@ -43,7 +43,7 @@
 
 #include <QtWidgets>
 #include <QtNetwork>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 
 #include "ControlStrip.h"
 #include "TitleBar.h"

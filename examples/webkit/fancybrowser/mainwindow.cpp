@@ -40,7 +40,7 @@
 
 #include <QtWidgets>
 #include <QtNetwork>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 #include "mainwindow.h"
 
 //! [1]
