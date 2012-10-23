@@ -44,7 +44,6 @@
 #include <QPainter>
 #include <QLabel>
 #include <QResizeEvent>
-#include <QPlastiqueStyle>
 #include <QAbstractScrollArea>
 
 #include "plotwidget.h"
@@ -55,10 +54,6 @@ PlotWidget::PlotWidget(bool /*smallscreen*/)
 {
     setWindowTitle(QLatin1String("Plot"));
     m_clear = new QPushButton(QLatin1String("Clear"), this);
-#if defined(Q_WS_MAEMO_5)
-    m_clear->setStyle(new QPlastiqueStyle());
-    m_clear->setFixedHeight(55);
-#endif
     connect(m_clear, SIGNAL(clicked()), this, SLOT(reset()));
     m_legend = new QLabel(this);
     QString legend;
