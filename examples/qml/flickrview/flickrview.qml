@@ -229,7 +229,6 @@ Rectangle {
             }
 
             onNavigationRequested: {
-                var pattern = new RegExp('^(https|http)://www.flickr.com|^(https|http)://login.yahoo.com');
                 switch (request.navigationType)
                 {
                 case WebView.LinkClickedNavigation:
@@ -238,7 +237,7 @@ Rectangle {
                 case WebView.ReloadNavigation:
                 case WebView.FormResubmittedNavigation:
                 case WebView.OtherNavigation:
-                    if (pattern.test(request.url)) {
+                    if (/^(https|http):\/\/(www\.flickr\.com|login\.yahoo\.com)/.test(request.url)) {
                         request.action = WebView.AcceptRequest
                         return
                     }
