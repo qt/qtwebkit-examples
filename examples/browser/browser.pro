@@ -3,7 +3,7 @@ TARGET = browser
 QT += webkitwidgets network widgets printsupport
 
 CONFIG += qt warn_on
-contains(QT_BUILD_PARTS, tools):!embedded: QT += uitools
+!isEmpty(QT.uitools.name):!embedded: QT += uitools
 else: DEFINES += QT_NO_UITOOLS
 
 FORMS += \
