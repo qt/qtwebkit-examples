@@ -11,8 +11,3 @@ target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/xmlpatterns/qo
 sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro *.xq *.html
 sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/xmlpatterns/qobjectxmlmodel
 INSTALLS += target sources
-
-symbian {
-    TARGET.UID3 = 0xA000D7C8
-    CONFIG += qt_example
-}

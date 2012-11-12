@@ -24,13 +24,6 @@ SOURCES += src/Main.cpp \
     src/webview.cpp
 RESOURCES += src/anomaly.qrc
 
-symbian {
-    TARGET.UID3 = 0xA000CF71
-    CONFIG += qt_demo
-    TARGET.CAPABILITY = NetworkServices
-    TARGET.EPOCHEAPSIZE = 0x20000 0x2000000
-}
-
 target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/embedded/anomaly
 sources.files = $$SOURCES $$HEADERS $$RESOURCES *.pro src/images
 sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/embedded/anomaly

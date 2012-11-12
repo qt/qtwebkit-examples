@@ -14,8 +14,3 @@ target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/webkit/formext
 sources.files = $$SOURCES $$HEADERS $$FORMS $$RESOURCES *.pro form.html images
 sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/webkit/formextractor
 INSTALLS += target sources
-
-symbian {
-    TARGET.UID3 = 0xA000CF6D
-    CONFIG += qt_example
-}

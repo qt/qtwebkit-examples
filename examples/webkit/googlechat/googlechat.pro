@@ -9,8 +9,3 @@ target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/webkit/googlec
 sources.files = $$SOURCES $$HEADERS $$FORMS *.pro
 sources.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/webkit/googlechat
 INSTALLS += target sources
-
-symbian {
-    TARGET.UID3 = 0xA000CF6E
-    CONFIG += qt_example
-}
