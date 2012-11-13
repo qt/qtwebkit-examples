@@ -158,8 +158,7 @@ Rectangle {
 
             State {
                 name: "hidden"
-                PropertyChanges { target: panel; color: "gray"; opacity: 0.2; y: -height + container.padding }
-                PropertyChanges { target: showListArea; visible: true }
+                PropertyChanges { target: panel; color: "gray"; opacity: 0.2; y: -height }
             }
         ]
 
@@ -168,21 +167,6 @@ Rectangle {
             interval: 3000
             repeat: false
             onTriggered: panel.state = "hidden"
-        }
-
-        MouseArea {
-            id: showListArea
-            height: container.padding
-            anchors {
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
-            onPressed: {
-                panel.state = "list"
-                if (currentVideo.status == videoStatus.playing)
-                    hideTimer.restart()
-            }
         }
 
         ListView {
@@ -395,9 +379,9 @@ Rectangle {
     }
 
     Rectangle {
-        height: 10
+        height: container.padding
         color: "black"
-        opacity: (panel.state == "hidden") ? 0 : 0.8
+        opacity: (panel.state == "hidden") ? 0.2 : 0.8
 
         Behavior on opacity { NumberAnimation { duration: 200 } }
 
@@ -418,6 +402,19 @@ Rectangle {
                     return "Choose from preset video streams"
                 else
                     return currentVideo.title
+            }
+        }
+
+        MouseArea {
+            // Responsible for showing and hiding the thumbnail list.
+            anchors.fill: parent
+            onPressed: {
+                if (panel.state != "list") {
+                    panel.state = "list"
+                    if (currentVideo.status == videoStatus.playing)
+                        hideTimer.restart()
+                } else
+                    panel.state = "hidden"
             }
         }
     }
