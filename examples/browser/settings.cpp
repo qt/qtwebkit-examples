@@ -89,7 +89,7 @@ void SettingsDialog::loadFromSettings()
 {
     QSettings settings;
     settings.beginGroup(QLatin1String("MainWindow"));
-    QString defaultHome = QLatin1String("http://doc.qt.digia.com");
+    QString defaultHome = QLatin1String("http://qt-project.org/");
     homeLineEdit->setText(settings.value(QLatin1String("home"), defaultHome).toString());
     settings.endGroup();
 

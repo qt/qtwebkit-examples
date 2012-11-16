@@ -3,19 +3,19 @@
 <xbel version="1.0">
     <folder folded="yes">
         <title>Bookmarks Bar</title>
-        <bookmark href="http://qt.digia.com/">
+        <bookmark href="http://qt-project.org/">
             <title>Qt Home Page</title>
         </bookmark>
         <bookmark href="http://webkit.org/">
             <title>WebKit.org</title>
         </bookmark>
-        <bookmark href="http://doc.qt.digia.com">
+        <bookmark href="http://qt-project.org/doc/">
             <title>Qt Documentation</title>
         </bookmark>
-        <bookmark href="http://qt-project.org">
-            <title>Qt Project</title>
+        <bookmark href="http://qt-project.org/quarterly/">
+            <title>Qt Quarterly</title>
         </bookmark>
-        <bookmark href="http://blog.qt.digia.com/">
+        <bookmark href="http://planet.qt-project.org/">
             <title>Qt Blog</title>
         </bookmark>
         <bookmark href="http://www.qtcentre.org/">
@@ -24,8 +24,8 @@
         <bookmark href="http://qt-apps.org/">
             <title>Qt-Apps.org</title>
         </bookmark>
-        <bookmark href="http://qtnode.net/">
-            <title>qtnode</title>
+        <bookmark href="http://qt-project.org/wiki/OnlineCommunities/">
+            <title>Online Communities</title>
         </bookmark>
        <bookmark href="http://xkcd.com/">
             <title>xkcd</title>
