@@ -7,8 +7,6 @@ SUBDIRS +=  domtraversal \
             imageanalyzer \
             framecapture \
 
-contains(QT_CONFIG, openssl):SUBDIRS += googlechat
-
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/qtwebkit-examples-and-demos/webkit
 sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS webkit.pro README
