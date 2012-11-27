@@ -54,10 +54,10 @@ BookmarksView::BookmarksView(QWidget *parent)
     layout->addWidget(m_iconView);
 
     m_iconView->addItem("www.google.com");
-    m_iconView->addItem("qt.nokia.com/doc/4.5");
+    m_iconView->addItem("qt-project.org/doc/qt-5.0");
     m_iconView->addItem("news.bbc.co.uk/2/mobile/default.stm");
     m_iconView->addItem("mobile.wikipedia.org");
-    m_iconView->addItem("qt.nokia.com");
+    m_iconView->addItem("qt.digia.com");
     m_iconView->addItem("en.wikipedia.org");
 
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

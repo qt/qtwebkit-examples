@@ -46,6 +46,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     Window window;
     window.show();
-    window.setUrl(QUrl("http://qt.nokia.com/"));
+    window.setUrl(QUrl("http://qt-project.org/"));
     return app.exec();
 }
