@@ -138,7 +138,7 @@ void ImageAnalyzer::fetchURLs()
             // HTTP Get image over network.
             m_outstandingFetches++;
             QNetworkRequest request = QNetworkRequest(URL);
-            request.setRawHeader("User-Agent", "Digia - Custom QT app");
+            request.setRawHeader("User-Agent", "Digia - Custom Qt app");
             m_network->get(request);
         } else {
             // Get image from cache
