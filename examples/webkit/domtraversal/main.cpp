@@ -37,7 +37,7 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
+//! [main program]
 #include <QApplication>
 #include "window.h"
 
@@ -49,3 +49,4 @@ int main(int argc, char *argv[])
     window.setUrl(QUrl("http://qt-project.org/"));
     return app.exec();
 }
+//! [main program]
