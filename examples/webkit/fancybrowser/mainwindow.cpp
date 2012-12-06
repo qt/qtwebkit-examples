@@ -167,7 +167,10 @@ void MainWindow::finishLoading(bool)
 //! [7]
 void MainWindow::highlightAllLinks()
 {
-    QString code = "$('a').each( function () { $(this).css('background-color', 'yellow') } )";
+    // We append '; undefined' after the jQuery call here to prevent a possible recursion loop and crash caused by
+    // the way the elements returned by the each iterator elements reference each other, which causes problems upon
+    // converting them to QVariants.
+    QString code = "$('a').each( function () { $(this).css('background-color', 'yellow') } ); undefined";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 //! [7]
@@ -176,10 +179,14 @@ void MainWindow::highlightAllLinks()
 void MainWindow::rotateImages(bool invert)
 {
     QString code;
+
+    // We append '; undefined' after each of the jQuery calls here to prevent a possible recursion loop and crash caused by
+    // the way the elements returned by the each iterator elements reference each other, which causes problems upon
+    // converting them to QVariants.
     if (invert)
-        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(180deg)') } )";
+        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(180deg)') } ); undefined";
     else
-        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(0deg)') } )";
+        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(0deg)') } ); undefined";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 //! [8]
