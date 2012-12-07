@@ -1,0 +1,30 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project     = QtWebKitExamples
+description = "Qt WebKit Examples and Demos Documentation"
+url                     = http://qt-project.org/doc/qt-5.0/qtwebkit-examples
+version     = 5.0.0
+
+# Defines the name of the project. You cannot use operators (+, =, -) in
+# the name. Properties for this project are set using a qhp.<projectname>.property
+# format.
+
+qhp.projects = QtWebKitExamples
+
+qhp.QtWebKitExamples.file = qtwebkitexamples.qhp
+qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkit-examples.500
+qhp.QtWebKitExamples.indexTitle = Qt WebKit Examples
+qhp.QtWebKitExamples.virtualFolder  = qtwebkit-examples
+qhp.QtWebKitExamples.indexRoot  =
+qhp.QtQml.filterAttributes    = qtwebkit-examples 5.0.0 qtrefdoc
+qhp.QtQml.customFilters.Qt.name = QtWebKit 5.0.0
+qhp.QtQml.customFilters.Qt.filterAttributes = qtwebkit-examples 5.0.0
+
+outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
+
+depends += qtcore qtwidgets qtgui qtscript qtdoc qtprintsupport qtxml qtwebkitwidgets
+
+exampledirs = ../examples/webkit
+# No documentation for the browser atm, we might want to revive this
+# and add it to the exampledirs
+#              ../examples/browser

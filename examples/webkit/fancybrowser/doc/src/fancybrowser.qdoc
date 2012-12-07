@@ -33,7 +33,7 @@
     create a web browser with special effects and content
     manipulation.
 
-    \image fancybrowser-example.pn
+    \image fancybrowser-example.png
 
     The application makes use of QWebFrame::evaluateJavaScript to
     evaluate the jQuery JavaScript code. A QMainWindow with a QWebView
