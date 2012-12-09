@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example webkit/formextractor
+    \example formextractor
     \title Form Extractor Example
 
     \brief The Form Extractor example shows how to use QWebFrame with JavaScript to
