@@ -2,7 +2,7 @@ TEMPLATE = app
 
 DEFINES += QWEBKIT_EXAMPLE_NAME=\\\"flickrview\\\"
 
-QT += quick qml
+QT += quick qml webkit
 SOURCES += ../shared/main.cpp
 
 mac: CONFIG -= app_bundle

@@ -2,7 +2,7 @@ TEMPLATE = app
 
 DEFINES += QWEBKIT_EXAMPLE_NAME=\\\"youtubeview\\\"
 
-QT += quick qml
+QT += quick qml webkit
 SOURCES += ../shared/main.cpp
 
 mac: CONFIG -= app_bundle
