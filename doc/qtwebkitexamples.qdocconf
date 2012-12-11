@@ -22,9 +22,7 @@ qhp.QtQml.customFilters.Qt.filterAttributes = qtwebkit-examples 5.0.0
 
 outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
 
-depends += qtcore qtwidgets qtgui qtscript qtdoc qtprintsupport qtxml qtwebkitwidgets
+depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkitwidgets qtwebkit
 
-exampledirs = ../examples/webkit
-# No documentation for the browser atm, we might want to revive this
-# and add it to the exampledirs
-#              ../examples/browser
+exampledirs = ../examples/webkitwidgets
+              ../examples/webkitqml
