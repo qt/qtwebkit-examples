@@ -28,9 +28,11 @@
 /*!
     \example youtubeview
     \title YouTube View Example
+    \brief Demonstrates how to embed a web view in a Qt Quick application
+    \ingroup webkit-qmlexamples
 
-    \brief The YouTube View \l{Qt QML}{QML} example shows how to embed a \l{WebView} into
-    a \l{Qt Quick} application and play \l{http://www.youtube.com/html5}{HTML5 video clips from YouTube}.
+    The YouTube View \l{Qt QML}{QML} example uses a \l{WebView} to play
+    \l{http://www.youtube.com/html5}{HTML5 video clips from YouTube}.
 
     \image youtubeview-example.png
 

@@ -28,6 +28,8 @@
 /*!
     \example fancybrowser
     \title Fancy Browser Example
+    \brief Demonstrates how to use browse web and manipulate content
+    \ingroup webkit-widgetexamples
 
     \brief The Fancy Browser example shows how to use JQuery with QtWebKit to
     create a web browser with special effects and content

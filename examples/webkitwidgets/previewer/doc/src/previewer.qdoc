@@ -28,6 +28,8 @@
 /*!
     \example previewer
     \title Previewer Example
+    \brief Demonstrates how to preview HTML data
+    \ingroup webkit-widgetexamples
 
     \brief The Previewer example shows how to use QtWebKit's QWebView to preview
     HTML data written in a QPlainTextEdit.

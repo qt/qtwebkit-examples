@@ -26,24 +26,16 @@
 ****************************************************************************/
 
 /*!
-    \example flickrview
-    \title Flickr View Example
-    \brief Demonstrates how to embed a web view in a Qt Quick application
-    \ingroup webkit-qmlexamples
+    \example browser
+    \title Tab Browser
+    \brief Demonstrates a complete web browsing experience
+    \ingroup webkit-widgetexamples
 
-    The Flickr View Qt Quick example uses a \l{WebView} to browse the images
-    from the \l{http://flickr.com}{Flickr} public RSS feed.
+    The Tab Browser example shows \l{Qt WebKit} module in action,
+    providing a little Web browser application with support for tabs.
 
-    \image flickrview-example.png
+    \image browser-demo.png
 
-    FlickrView is an example that retrieves the \l{http://www.flickr.com/services/feeds/docs/photos_public}{flickr.com RSS feed of public photos}
-    utilizing an \l{XmlListModel} and shows the thumbnails in a \l{ListView}.
-    When clicking on a thumbnail in the list at the bottom, the full size
-    image is loaded in a \l{WebView} using the corresponding Flickr link for it.
-    It is also possible to browse the profile of Flickr users in the WebView like in a
-    normal browser. This demonstrates how navigaton can be restricted to a specific
-    domain in the \c{onNavigationRequested} signal.
-    The feed can be updated using pull-to-refresh at the end of the thumbnail list.
-
-    This example uses the QtWebKit QML API that utilizes the WebKit2 split-process architecture.
+    This browser is the foundation for the \l{Arora Browser}, a simple cross-platform
+    Web browser.
 */

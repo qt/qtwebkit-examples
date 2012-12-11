@@ -16,9 +16,20 @@ qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkit-examples.500
 qhp.QtWebKitExamples.indexTitle = Qt WebKit Examples
 qhp.QtWebKitExamples.virtualFolder  = qtwebkit-examples
 qhp.QtWebKitExamples.indexRoot  =
-qhp.QtQml.filterAttributes    = qtwebkit-examples 5.0.0 qtrefdoc
-qhp.QtQml.customFilters.Qt.name = QtWebKit 5.0.0
-qhp.QtQml.customFilters.Qt.filterAttributes = qtwebkit-examples 5.0.0
+qhp.QtWebKitExamples.filterAttributes    = qtwebkit-examples 5.0.0 qtrefdoc
+qhp.QtWebKitExamples.customFilters.Qt.name = QtWebKit 5.0.0
+qhp.QtWebKitExamples.customFilters.Qt.filterAttributes = qtwebkit-examples 5.0.0
+
+qhp.QtWebKitExamples.subprojects         = webkitwidgetsexamples webkitexamples
+qhp.QtWebKitExamples.subprojects.webkitwidgetsexamples.title = Qt WebKit Widgets Examples
+qhp.QtWebKitExamples.subprojects.webkitwidgetsexamples.indexTitle = Qt WebKit Widgets Examples and Demos
+qhp.QtWebKitExamples.subprojects.webkitwidgetsexamples.selectors = class fake:headerfile
+qhp.QtWebKitExamples.subprojects.webkitwidgetsexamples.sortPages = true
+
+qhp.QtWebKitExamples.subprojects.webkitexamples.title = Qt WebKit Examples
+qhp.QtWebKitExamples.subprojects.webkitexamples.indexTitle = Qt WebKit Examples and Demos
+qhp.QtWebKitExamples.subprojects.webkitexamples.selectors = class fake:headerfile
+qhp.QtWebKitExamples.subprojects.webkitexamples.sortPages = true
 
 outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
 
@@ -26,3 +37,7 @@ depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkitwidgets q
 
 exampledirs = ../examples/webkitwidgets \
               ../examples/webkitqml
+
+sourcedirs = src
+
+imagedirs = images
