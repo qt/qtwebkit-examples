@@ -24,5 +24,5 @@ outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
 
 depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkitwidgets qtwebkit
 
-exampledirs = ../examples/webkitwidgets
+exampledirs = ../examples/webkitwidgets \
               ../examples/webkitqml
