@@ -35,6 +35,8 @@
     and QScrollPrepareEvent to implement smooth scrolling for a
     custom Widget.
 
+    \image wheel-example.png
+
     \section1 Basics
 
     The QScroller class is the main part of the smooth scrolling
