@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example webkit/simpleselector
+    \example webkitwidgets/simpleselector
     \title Simple Selector Example
     \brief Demonstrates how to identify HTML elements in a web page
     \ingroup webkit-widgetexamples

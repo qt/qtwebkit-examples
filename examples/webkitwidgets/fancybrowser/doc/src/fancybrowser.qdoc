@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example fancybrowser
+    \example webkitwidgets/fancybrowser
     \title Fancy Browser Example
     \brief Demonstrates how to use browse web and manipulate content
     \ingroup webkit-widgetexamples

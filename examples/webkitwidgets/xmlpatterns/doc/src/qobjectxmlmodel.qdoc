@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-  \example xmlpatterns/qobjectxmlmodel
+  \example webkitwidgets/xmlpatterns
   \title QObject XML Model Example
   \brief Demonstrates how to present XML-like data structure in the web view
   \ingroup webkit-widgetexamples

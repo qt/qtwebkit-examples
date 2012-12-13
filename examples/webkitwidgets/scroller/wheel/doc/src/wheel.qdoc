@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example scroller/wheel
+    \example webkitwidgets/scroller/wheel
     \title Wheel Scroller Example
     \brief Demonstrates how scrolling is handled in Qt.
     \ingroup webkit-widgetexamples

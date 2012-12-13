@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example flickrview
+    \example webkitqml/flickrview
     \title Flickr View Example
     \brief Demonstrates how to embed a web view in a Qt Quick application
     \ingroup webkit-qmlexamples

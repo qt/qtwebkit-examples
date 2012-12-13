@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example domtraversal
+    \example webkitwidgets/domtraversal
     \title DOM Traversal Example
     \brief Demonstrates how to traverse the DOM tree
     \ingroup webkit-widgetexamples

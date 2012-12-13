@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example webkit/framecapture
+    \example webkitwidgets/framecapture
     \title WebKit Frame Capture Example
     \brief Demonstrates how to capture frame in the web page
     \ingroup webkit-widgetexamples

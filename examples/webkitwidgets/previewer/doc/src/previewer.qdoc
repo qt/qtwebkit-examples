@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example previewer
+    \example webkitwidgets/previewer
     \title Previewer Example
     \brief Demonstrates how to preview HTML data
     \ingroup webkit-widgetexamples

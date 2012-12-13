@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example webkit/imageanalyzer
+    \example webkitwidgets/imageanalyzer
     \title The Webkit Bridge Tutorial - Hybrid Client Application
     \brief Demonstrates how to integrate web functionality with other core
            functionality.

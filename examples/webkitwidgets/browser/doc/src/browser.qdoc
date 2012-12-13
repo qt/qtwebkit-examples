@@ -26,7 +26,7 @@
 ****************************************************************************/
 
 /*!
-    \example browser
+    \example webkitwidgets/browser
     \title Tab Browser
     \brief Demonstrates a complete web browsing experience
     \ingroup webkit-widgetexamples
