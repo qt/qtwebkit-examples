@@ -2,7 +2,6 @@ TEMPLATE = app
 TARGET = browser
 QT += webkitwidgets network widgets printsupport
 
-CONFIG += qt warn_on
 !isEmpty(QT.uitools.name):!embedded: QT += uitools
 else: DEFINES += QT_NO_UITOOLS
 
