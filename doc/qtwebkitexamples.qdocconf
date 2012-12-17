@@ -20,6 +20,11 @@ qhp.QtWebKitExamples.filterAttributes    = qtwebkitexamples 5.0.0 qtrefdoc
 qhp.QtWebKitExamples.customFilters.Qt.name = QtWebKit 5.0.0
 qhp.QtWebKitExamples.customFilters.Qt.filterAttributes = qtwebkitexamples 5.0.0
 
+qhp.QtWebKitExamples.subprojects = manual
+qhp.QtWebKitExamples.subprojects.manual.title = Qt WebKit Examples
+qhp.QtWebKitExamples.subprojects.manual.indexTitle = Qt WebKit Examples
+qhp.QtWebKitExamples.subprojects.manual.type = manual
+
 outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
 
 depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkitwidgets qtwebkit
