@@ -97,12 +97,12 @@
   callback interface functions that don't have implementations in
   QSimpleXmlNodeModel:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 0
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 0
 
   The node model class declares three data members:
 
   \target Three Data Members
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 2
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 2
 
   The constructor sets \c m_baseURI to the QUrl constructed from the
   \l{QCoreApplication::applicationFilePath()}{file path} of the
@@ -126,7 +126,7 @@
   \l{QAbstractXmlNodeModel::createIndex()}{createIndex()} creates the
   QXmlNodeModelIndex, as in the local \c{root()} function, for example:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 0
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 0
 
   A QObject represents an element node in the node model, but we also
   need to represent attribute nodes. For example, the class name of a
@@ -142,7 +142,7 @@
   identifies the attribute in the QObject. For this \e{additional
   data} value, we use \c{enum QObjectNodeType}:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 3
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 3
 
   Ignore the \c{MetaObjectXXX} values for now. They will be explained
   in \l{Including The QMetaObject Tree}. Here we are interested in the
@@ -163,8 +163,8 @@
   \c{createIndex(object,QObjectClassName)}.
 
   \target QObject attributes
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 6
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 8
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 6
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 8
 
   \l{QObject attributes} {attributes()} is one of the callback
   functions you have to implement in your custom node model class. It
@@ -188,13 +188,13 @@
   QMetaObject tree.
 
   \target QObject nextFromSimpleAxis
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 2
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 4
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 2
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 4
 
   The main switch uses \c toNodeType(), which obtains the node
   type from \l{QXmlNodeModelIndex::additionalData()}:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 1
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 1
 
   \c{case IsObject} case is the most interesting. It switches again on
   the value of the \c{axis} parameter, which specifies the direction
@@ -216,7 +216,7 @@
   and -1 to traverse to the
   \l{QAbstractXmlNodeModel::PreviousSibling} {PreviousSibling}.
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 5
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 5
 
   \c{qObjectSibling()} determines whether or not the node has any
   siblings. It is called with \c{n}, the index of the current node.
@@ -239,7 +239,7 @@
   don't have children. But these two cases simply return the
   \l{QXmlNodeModelIndex} {node index} of the current node.
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 7
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 7
 
   Since \c n is the QXmlNodeModelIndex of the current node, all this
   does is create another QXmlNodeModelIndex for the current node and
@@ -281,13 +281,13 @@
   as a vector of pointers to QMetaObject:
 
   \target All MetaObjects
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 1
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 4
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 1
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.h 4
 
   This vector gets populated by the QObjectXmlModel constructor by
   calling the private allMetaObjects() function:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 9
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 9
 
   The first half of the function is an example of the standard code
   pattern for using QtXmlPatterns to run an XQuery. First it creates an
@@ -313,14 +313,14 @@
   \c{MetaObjectXXX} cases:
 
   \target Full Listing of nextFromSimpleAxis
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 2
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 3
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 4
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 2
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 3
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 4
 
   But first, revisit the \c{PreviousSibling} case for the
   \c{IsQObject} case:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 10
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 10
 
   When asking for the previous sibling of the root of the QObject
   tree, it creates a node model index with a null QObject pointer and
@@ -332,7 +332,7 @@
   QObject tree in the \c{NextSibling} case of case \c{MetaObjects},
   where the \c{root()} function is called:
 
-  \snippet xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 11
+  \snippet webkitwidgets/xmlpatterns/qobjectxmlmodel/qobjectxmlmodel.cpp 11
 
   Having jumped from the QObject tree to the QMetaObject tree, the
   query engine will use the \c{MetaObject}, \c{MetaObjectClassName},

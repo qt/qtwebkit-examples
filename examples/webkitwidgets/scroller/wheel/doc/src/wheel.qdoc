@@ -64,14 +64,14 @@
     In the widget we need to grab the QFlickGesture. The gesture itself
     will setAcceptTouchEvents for us, so we don't need to do that here.
 
-    \snippet scroller/wheel/wheelwidget.cpp 0
+    \snippet webkitwidgets/scroller/wheel/wheelwidget.cpp 0
 
     The widget will get gesture events but in addition we also will
     get the events from QScroller.
     We will need to accept the QScrollPrepareEvent to indicate that
     a scrolling should really be started from the given position.
 
-    \snippet scroller/wheel/wheelwidget.cpp 1
+    \snippet webkitwidgets/scroller/wheel/wheelwidget.cpp 1
 
     We should call all three set functions form QScrollPrepareEvent.
 
@@ -90,7 +90,7 @@
     \endlist
 
     The handling of the QScrollEvent is a lengthly code not fully shown here.
-    \snippet scroller/wheel/wheelwidget.cpp 2
+    \snippet webkitwidgets/scroller/wheel/wheelwidget.cpp 2
 
     In principle it does three steps.
     \list
@@ -101,7 +101,7 @@
     \endlist
 
     The following code does the centering.
-    \snippet scroller/wheel/wheelwidget.cpp 3
+    \snippet webkitwidgets/scroller/wheel/wheelwidget.cpp 3
 
     We check if the scrolling is finished which is indicated in the
     QScrollEvent by the \c isLast flag.

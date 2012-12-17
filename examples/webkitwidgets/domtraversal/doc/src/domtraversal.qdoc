@@ -51,7 +51,7 @@
     using \l{Qt Designer}. As a result, the class is also derived from the user
     interface class created by \l uic:
 
-    \snippet domtraversal/window.h Window class definition
+    \snippet webkitwidgets/domtraversal/window.h Window class definition
 
     Two important functions to note are the \c on_webView_loadFinished() slot and
     the \c examineChildElements() function. The former is automatically called
@@ -67,13 +67,13 @@
     In the \c Window class constructor, we call the \l{QWidget::}{setupUi()} function
     to set up the user interface described in the \c{window.ui} file:
 
-    \snippet domtraversal/window.cpp Window constructor
+    \snippet webkitwidgets/domtraversal/window.cpp Window constructor
 
     When the Web page is loaded, the \c on_webView_loadFinished() slot is called. Here,
     we clear the tree widget and begin inspection of the document by obtaining the
     document element from the page's main frame:
 
-    \snippet domtraversal/window.cpp begin document inspection
+    \snippet webkitwidgets/domtraversal/window.cpp begin document inspection
 
     At this point, we call the \c examineChildElements() function to traverse the
     document, starting with the child elements of the document element for which we
@@ -86,7 +86,7 @@
     \l{QWebElement::}{isNull()} function, we create a new QTreeWidgetItem instance with
     the element name and add it to the parent item.
 
-    \snippet domtraversal/window.cpp traverse document
+    \snippet webkitwidgets/domtraversal/window.cpp traverse document
 
     We recursively examine the child elements for each element by calling
     \c examineChildElements() with the current child element and the newly-created item.
@@ -99,14 +99,14 @@
     For completeness, we show the \c setUrl() function, which is provided to allow the
     document URL to be set from the example's \c main() function.
 
-    \snippet domtraversal/window.cpp set URL
+    \snippet webkitwidgets/domtraversal/window.cpp set URL
 
     \section1 Starting the Example
 
     We set up the application, create
     a \c Window instance, set its URL, and show it:
 
-    \snippet domtraversal/main.cpp main program
+    \snippet webkitwidgets/domtraversal/main.cpp main program
 
     When the application's event loop is run, the Qt home page will load, and the
     tree widget will be updated to show the document structure. Navigating to another

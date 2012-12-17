@@ -102,7 +102,7 @@ bool AbstractWheelWidget::event(QEvent *e)
         int ih = itemHeight();
 
 // ![2]
-
+// ![3]
         // -- calculate the current item position and offset and redraw the widget
         int ic = itemCount();
         if (ic>0) {
@@ -123,6 +123,7 @@ bool AbstractWheelWidget::event(QEvent *e)
 
         se->accept();
         return true;
+// ![3]
     }
     default:
         return QWidget::event(e);
