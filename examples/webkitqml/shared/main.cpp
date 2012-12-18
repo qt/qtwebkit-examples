@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 {
     QGuiApplication app(argc,argv);
     QQuickView view;
-    view.setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QLatin1String("/"QWEBKIT_EXAMPLE_NAME".qml")));
+    view.setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QLatin1String("/" QWEBKIT_EXAMPLE_NAME ".qml")));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.show();
     return app.exec();
