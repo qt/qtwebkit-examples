@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = browser
 QT += webkitwidgets network widgets printsupport
 
-!isEmpty(QT.uitools.name):!embedded: QT += uitools
+qtHaveModule(uitools):!embedded: QT += uitools
 else: DEFINES += QT_NO_UITOOLS
 
 FORMS += \
