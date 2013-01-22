@@ -39,7 +39,7 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import "../../shared"
+import "qrc:/shared" as Shared
 
 Rectangle {
     id: container
@@ -77,7 +77,7 @@ Rectangle {
 
     Component {
         id: delegate
-        Button {
+        Shared.Button {
             buttonWidth: 200
             text: name
             onClicked: presetClicked(name)
