@@ -12,7 +12,7 @@ version     = 5.0.1
 qhp.projects = QtWebKitExamples
 
 qhp.QtWebKitExamples.file = qtwebkitexamples.qhp
-qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkitexamples.500
+qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkitexamples.501
 qhp.QtWebKitExamples.indexTitle = Qt WebKit Examples
 qhp.QtWebKitExamples.virtualFolder  = qtwebkitexamples
 qhp.QtWebKitExamples.indexRoot  =
