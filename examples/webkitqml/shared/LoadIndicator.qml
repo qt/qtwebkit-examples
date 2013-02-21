@@ -44,7 +44,7 @@ Rectangle {
     id: container
 
     property bool running: false
-    property string imageSource: "images/busy.png"
+    property string imageSource: "qrc:/shared/images/busy.png"
 
     visible: running
 

@@ -2,8 +2,8 @@ include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project     = QtWebKitExamples
 description = "Qt WebKit Examples and Demos Documentation"
-url                     = http://qt-project.org/doc/qt-5.0/qtwebkitexamples
-version     = 5.0.1
+url                     = http://qt-project.org/doc/qt-$QT_VER/qtwebkitexamples
+version     = $QT_VERSION
 
 # Defines the name of the project. You cannot use operators (+, =, -) in
 # the name. Properties for this project are set using a qhp.<projectname>.property
@@ -12,13 +12,13 @@ version     = 5.0.1
 qhp.projects = QtWebKitExamples
 
 qhp.QtWebKitExamples.file = qtwebkitexamples.qhp
-qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkitexamples.501
+qhp.QtWebKitExamples.namespace = org.qt-project.qtwebkitexamples.$QT_VERSION_TAG
 qhp.QtWebKitExamples.indexTitle = Qt WebKit Examples
 qhp.QtWebKitExamples.virtualFolder  = qtwebkitexamples
 qhp.QtWebKitExamples.indexRoot  =
-qhp.QtWebKitExamples.filterAttributes    = qtwebkitexamples 5.0.1 qtrefdoc
-qhp.QtWebKitExamples.customFilters.Qt.name = QtWebKit 5.0.1
-qhp.QtWebKitExamples.customFilters.Qt.filterAttributes = qtwebkitexamples 5.0.1
+qhp.QtWebKitExamples.filterAttributes    = qtwebkitexamples $QT_VERSION qtrefdoc
+qhp.QtWebKitExamples.customFilters.Qt.name = QtWebKit $QT_VERSION
+qhp.QtWebKitExamples.customFilters.Qt.filterAttributes = qtwebkitexamples $QT_VERSION
 
 qhp.QtWebKitExamples.subprojects = manual
 qhp.QtWebKitExamples.subprojects.manual.title = Qt WebKit Examples

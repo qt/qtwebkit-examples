@@ -41,8 +41,8 @@
 import QtQuick 2.0
 import QtWebKit 3.0
 import QtQuick.XmlListModel 2.0
-import "content"
-import "../shared"
+import "qrc:/shared" as Shared
+import "qrc:/content" as Content
 
 Rectangle {
     id: container
@@ -77,7 +77,7 @@ Rectangle {
             anchors.fill: parent
             opacity: 0
 
-            url: "content/player.html?" + currentVideo.vId
+            url: "qrc:///content/player.html?" + currentVideo.vId
 
             Behavior on opacity { NumberAnimation { duration: 200 } }
 
@@ -105,7 +105,7 @@ Rectangle {
             }
         }
 
-        YouTubeDialog {
+        Content.YouTubeDialog {
             id: presetDialog
             anchors.fill: parent
             visible: false
@@ -190,7 +190,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     width: height
                     height: visible ? listView.contentItem.height : 0
-                    Image { anchors.centerIn: parent; width: 50; height: 50; source: "../shared/images/less.png" }
+                    Image { anchors.centerIn: parent; width: 50; height: 50; source: "qrc:/shared/images/less.png" }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: model.requestLess()
@@ -205,7 +205,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     width: height
                     height: visible ? listView.contentItem.height : 0
-                    Image { anchors.centerIn: parent; width: 50; height: 50; source: "../shared/images/more.png" }
+                    Image { anchors.centerIn: parent; width: 50; height: 50; source: "qrc:/shared/images/more.png" }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: model.requestMore()
@@ -240,7 +240,7 @@ Rectangle {
             }
         }
 
-        LoadIndicator {
+        Shared.LoadIndicator {
             anchors.fill: parent
             color: "black"
             running: panel.state == "list" && model.status != XmlListModel.Ready
@@ -308,7 +308,7 @@ Rectangle {
             }
         }
 
-        Button {
+        Shared.Button {
             id: button
             buttonHeight: container.padding
             buttonWidth: container.width
