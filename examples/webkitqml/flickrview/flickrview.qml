@@ -41,7 +41,7 @@
 import QtQuick 2.0
 import QtWebKit 3.0
 import QtQuick.XmlListModel 2.0
-import "../shared"
+import "qrc:/shared" as Shared
 
 Rectangle {
     id: container
@@ -156,7 +156,7 @@ Rectangle {
                     left: parent.left
                 }
                 Image {
-                    source: "../shared/images/arrow.png"
+                    source: "qrc:/shared/images/arrow.png"
                     width: 30
                     height: 30
                     visible: updateInfo.state != "update"
@@ -189,7 +189,7 @@ Rectangle {
             }
         }
 
-        LoadIndicator {
+        Shared.LoadIndicator {
             anchors.fill: parent
             color: "black"
             running: !listView.visible && model.status != XmlListModel.Error
@@ -247,9 +247,9 @@ Rectangle {
             }
         }
 
-        LoadIndicator {
+        Shared.LoadIndicator {
             anchors.fill: parent
-            imageSource: "images/flickr.png"
+            imageSource: "qrc:/images/flickr.png"
             running: webView.loading
         }
     }

@@ -14,3 +14,6 @@ INSTALLS += target qml
 
 OTHER_FILES += \
     player.html
+
+RESOURCES += youtubeview.qrc \
+    ../shared/shared.qrc
