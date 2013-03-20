@@ -630,7 +630,7 @@ void BrowserMainWindow::slotFileOpen()
 
 void BrowserMainWindow::slotFilePrintPreview()
 {
-#ifndef QT_NO_PRINTER
+#ifndef QT_NO_PRINTPREVIEWDIALOG
     if (!currentTab())
         return;
     QPrintPreviewDialog *dialog = new QPrintPreviewDialog(this);
@@ -649,7 +649,7 @@ void BrowserMainWindow::slotFilePrint()
 
 void BrowserMainWindow::printRequested(QWebFrame *frame)
 {
-#ifndef QT_NO_PRINTER
+#ifndef QT_NO_PRINTDIALOG
     QPrinter printer;
     QPrintDialog *dialog = new QPrintDialog(&printer, this);
     dialog->setWindowTitle(tr("Print Document"));
