@@ -53,6 +53,7 @@ MainWindow::MainWindow(const QUrl& url)
     file.setFileName(":/jquery.min.js");
     file.open(QIODevice::ReadOnly);
     jQuery = file.readAll();
+    jQuery.append("\nvar qt = { 'jQuery': jQuery.noConflict(true) };");
     file.close();
 //! [1]
 
@@ -170,7 +171,7 @@ void MainWindow::highlightAllLinks()
     // We append '; undefined' after the jQuery call here to prevent a possible recursion loop and crash caused by
     // the way the elements returned by the each iterator elements reference each other, which causes problems upon
     // converting them to QVariants.
-    QString code = "$('a').each( function () { $(this).css('background-color', 'yellow') } ); undefined";
+    QString code = "qt.jQuery('a').each( function () { qt.jQuery(this).css('background-color', 'yellow') } ); undefined";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 //! [7]
@@ -184,9 +185,9 @@ void MainWindow::rotateImages(bool invert)
     // the way the elements returned by the each iterator elements reference each other, which causes problems upon
     // converting them to QVariants.
     if (invert)
-        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(180deg)') } ); undefined";
+        code = "qt.jQuery('img').each( function () { qt.jQuery(this).css('-webkit-transition', '-webkit-transform 2s'); qt.jQuery(this).css('-webkit-transform', 'rotate(180deg)') } ); undefined";
     else
-        code = "$('img').each( function () { $(this).css('-webkit-transition', '-webkit-transform 2s'); $(this).css('-webkit-transform', 'rotate(0deg)') } ); undefined";
+        code = "qt.jQuery('img').each( function () { qt.jQuery(this).css('-webkit-transition', '-webkit-transform 2s'); qt.jQuery(this).css('-webkit-transform', 'rotate(0deg)') } ); undefined";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 //! [8]
@@ -194,25 +195,25 @@ void MainWindow::rotateImages(bool invert)
 //! [9]
 void MainWindow::removeGifImages()
 {
-    QString code = "$('[src*=gif]').remove()";
+    QString code = "qt.jQuery('[src*=gif]').remove()";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 
 void MainWindow::removeInlineFrames()
 {
-    QString code = "$('iframe').remove()";
+    QString code = "qt.jQuery('iframe').remove()";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 
 void MainWindow::removeObjectElements()
 {
-    QString code = "$('object').remove()";
+    QString code = "qt.jQuery('object').remove()";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 
 void MainWindow::removeEmbeddedElements()
 {
-    QString code = "$('embed').remove()";
+    QString code = "qt.jQuery('embed').remove()";
     view->page()->mainFrame()->evaluateJavaScript(code);
 }
 //! [9]
