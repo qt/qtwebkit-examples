@@ -1,4 +1,5 @@
 requires(qtHaveModule(webkit))
 
-TEMPLATE = subdirs
-SUBDIRS +=  examples doc
+load(qt_parts)
+
+SUBDIRS += doc
