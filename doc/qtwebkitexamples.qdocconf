@@ -1,8 +1,8 @@
 include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project     = QtWebKitExamples
-description = "Qt WebKit Examples and Demos Documentation"
-url                     = http://qt-project.org/doc/qt-$QT_VER/qtwebkitexamples
+description = "Qt WebKit Examples Documentation"
+url         = http://qt-project.org/doc/qt-$QT_VER/qtwebkitexamples
 version     = $QT_VERSION
 
 # Defines the name of the project. You cannot use operators (+, =, -) in
