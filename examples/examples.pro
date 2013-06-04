@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
-SUBDIRS +=  webkitqml
+qtHaveModule(quick): SUBDIRS +=  webkitqml
 qtHaveModule(webkitwidgets): SUBDIRS += webkitwidgets
