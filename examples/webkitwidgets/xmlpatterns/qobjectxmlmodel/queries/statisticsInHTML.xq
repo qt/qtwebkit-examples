@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title></title>
+    <title>Generated statistics</title>
   </head>
   <body>
     <p>In total the tree has {count($root//QObject)} QObject instances.</p>

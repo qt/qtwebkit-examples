@@ -36,7 +36,7 @@
 
     \image youtubeview-example.png
 
-    The applicaiton makes use of an \l{XmlListModel} to query the \l{https://developers.google.com/youtube}{YouTube API}
+    The application makes use of an \l{XmlListModel} to query the \l{https://developers.google.com/youtube}{YouTube API}
     for HTML5 video clips and lists thumbnails of the clips in a \l{ListView} at the top. The \l{WebView} loads a local \c player.html file that
     embeds a YouTube HTML5 video player using the \l{https://developers.google.com/youtube/iframe_api_reference}{IFrame player API},
     which allows to control the YouTube player using JavaScript.
