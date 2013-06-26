@@ -34,3 +34,5 @@ exampledirs = ../examples
 sourcedirs = src
 
 imagedirs = images
+
+navigation.landingpage = "Qt WebKit Examples"
