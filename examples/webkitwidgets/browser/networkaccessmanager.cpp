@@ -112,12 +112,12 @@ void NetworkAccessManager::requestFinished(QNetworkReply *reply)
     if (requestFinishedCount % 10)
         return;
 
+#ifdef QT_DEBUG
     double pctCached = (double(requestFinishedFromCacheCount) * 100.0/ double(requestFinishedCount));
     double pctPipelined = (double(requestFinishedPipelinedCount) * 100.0/ double(requestFinishedCount));
     double pctSecure = (double(requestFinishedSecureCount) * 100.0/ double(requestFinishedCount));
     double pctDownloadBuffer = (double(requestFinishedDownloadBufferCount) * 100.0/ double(requestFinishedCount));
 
-#ifdef QT_DEBUG
     qDebug("STATS [%lli requests total] [%3.2f%% from cache] [%3.2f%% pipelined] [%3.2f%% SSL/TLS] [%3.2f%% Zerocopy]", requestFinishedCount, pctCached, pctPipelined, pctSecure, pctDownloadBuffer);
 #endif
 }
