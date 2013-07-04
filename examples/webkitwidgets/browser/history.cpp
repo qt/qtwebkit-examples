@@ -513,7 +513,7 @@ int HistoryMenuModel::rowCount(const QModelIndex &parent) const
         return bumpedItems + folders;
     }
 
-    if (parent.internalId() == -1) {
+    if (parent.internalId() == quintptr(-1)) {
         if (parent.row() < bumpedRows())
             return 0;
     }
@@ -538,7 +538,7 @@ QModelIndex HistoryMenuModel::mapToSource(const QModelIndex &proxyIndex) const
     if (!proxyIndex.isValid())
         return QModelIndex();
 
-    if (proxyIndex.internalId() == -1) {
+    if (proxyIndex.internalId() == quintptr(-1)) {
         int bumpedItems = bumpedRows();
         if (proxyIndex.row() < bumpedItems)
             return m_treeModel->index(proxyIndex.row(), proxyIndex.column(), m_treeModel->index(0, 0));
@@ -559,7 +559,7 @@ QModelIndex HistoryMenuModel::index(int row, int column, const QModelIndex &pare
         || parent.column() > 0)
         return QModelIndex();
     if (!parent.isValid())
-        return createIndex(row, column, -1);
+        return createIndex(row, column, quintptr(-1));
 
     QModelIndex treeIndexParent = mapToSource(parent);
 

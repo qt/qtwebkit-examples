@@ -65,7 +65,6 @@ void ClearButton::paintEvent(QPaintEvent *event)
     int height = this->height();
 
     painter.setRenderHint(QPainter::Antialiasing, true);
-    QColor color = palette().color(QPalette::Mid);
     painter.setBrush(isDown()
                      ? palette().color(QPalette::Dark)
                      : palette().color(QPalette::Mid));

@@ -135,9 +135,8 @@ void SettingsDialog::loadFromSettings()
     // Privacy
     settings.beginGroup(QLatin1String("cookies"));
 
-    CookieJar *jar = BrowserApplication::cookieJar();
     QByteArray value = settings.value(QLatin1String("acceptCookies"), QLatin1String("AcceptOnlyFromSitesNavigatedTo")).toByteArray();
-    QMetaEnum acceptPolicyEnum = jar->staticMetaObject.enumerator(jar->staticMetaObject.indexOfEnumerator("AcceptPolicy"));
+    QMetaEnum acceptPolicyEnum = CookieJar::staticMetaObject.enumerator(CookieJar::staticMetaObject.indexOfEnumerator("AcceptPolicy"));
     CookieJar::AcceptPolicy acceptCookies = acceptPolicyEnum.keyToValue(value) == -1 ?
                         CookieJar::AcceptOnlyFromSitesNavigatedTo :
                         static_cast<CookieJar::AcceptPolicy>(acceptPolicyEnum.keyToValue(value));
@@ -154,7 +153,7 @@ void SettingsDialog::loadFromSettings()
     }
 
     value = settings.value(QLatin1String("keepCookiesUntil"), QLatin1String("Expire")).toByteArray();
-    QMetaEnum keepPolicyEnum = jar->staticMetaObject.enumerator(jar->staticMetaObject.indexOfEnumerator("KeepPolicy"));
+    QMetaEnum keepPolicyEnum = CookieJar::staticMetaObject.enumerator(CookieJar::staticMetaObject.indexOfEnumerator("KeepPolicy"));
     CookieJar::KeepPolicy keepCookies = keepPolicyEnum.keyToValue(value) == -1 ?
                         CookieJar::KeepUntilExpire :
                         static_cast<CookieJar::KeepPolicy>(keepPolicyEnum.keyToValue(value));
@@ -237,8 +236,7 @@ void SettingsDialog::saveToSettings()
         keepCookies = CookieJar::KeepUntilTimeLimit;
         break;
     }
-    CookieJar *jar = BrowserApplication::cookieJar();
-    QMetaEnum acceptPolicyEnum = jar->staticMetaObject.enumerator(jar->staticMetaObject.indexOfEnumerator("AcceptPolicy"));
+    QMetaEnum acceptPolicyEnum = CookieJar::staticMetaObject.enumerator(CookieJar::staticMetaObject.indexOfEnumerator("AcceptPolicy"));
     settings.setValue(QLatin1String("acceptCookies"), QLatin1String(acceptPolicyEnum.valueToKey(keepCookies)));
 
     CookieJar::KeepPolicy keepPolicy;
@@ -255,7 +253,7 @@ void SettingsDialog::saveToSettings()
         break;
     }
 
-    QMetaEnum keepPolicyEnum = jar->staticMetaObject.enumerator(jar->staticMetaObject.indexOfEnumerator("KeepPolicy"));
+    QMetaEnum keepPolicyEnum = CookieJar::staticMetaObject.enumerator(CookieJar::staticMetaObject.indexOfEnumerator("KeepPolicy"));
     settings.setValue(QLatin1String("keepCookiesUntil"), QLatin1String(keepPolicyEnum.valueToKey(keepPolicy)));
 
     settings.endGroup();
