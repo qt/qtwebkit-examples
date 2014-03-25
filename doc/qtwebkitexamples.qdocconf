@@ -27,7 +27,7 @@ qhp.QtWebKitExamples.subprojects.manual.type = manual
 
 outputdir = $QT_INSTALL_DOCS/qtwebkitexamples
 
-depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkitwidgets qtwebkit
+depends += qtcore qtwidgets qtquick qtgui qtscript qtdoc qtxml qtwebkit
 
 exampledirs = ../examples
 
