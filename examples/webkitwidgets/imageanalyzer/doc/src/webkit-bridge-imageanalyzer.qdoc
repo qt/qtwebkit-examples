@@ -33,7 +33,7 @@
     \ingroup webkit-widgetexamples
 
     In this example, we will show how to write a hybrid application using
-\l{The QtWebKit Bridge}{QtWebKit Bridge}, which distinguishes itself from a
+\l{The Qt WebKit Bridge}{Qt WebKit Bridge}, which distinguishes itself from a
 thin client in that it performs heavy calculations on the client side in C++,
 like a native application, but presents nothing more than a \c QWebView for its
 user interface, displaying web content written in HTML/JavaScript. The
@@ -41,7 +41,7 @@ application uses QtConcurrent to distribute its work across as many CPU cores as
 are available from the system, so it can process each image in parallel.
 
 For the full reference documentation of QtWebKit hybrid development, see
-\l{qtwebkit-bridge.html}{The QtWebKit Bridge}.
+\l{qtwebkit-bridge.html}{The Qt WebKit Bridge}.
 
 Initially, you will see a user interface with an empty list of images. Clicking
 on some of the images in the lower pane below adds them to the list view above,
