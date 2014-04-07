@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 {
     Q_INIT_RESOURCE(data);
     BrowserApplication application(argc, argv);
-    if (!application.isTheOnlyBrowser())
+    if (!application.isTheOnlyBrowser() || !application.isCorrectlyInitialized())
         return 0;
     application.newMainWindow();
     return application.exec();

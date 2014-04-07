@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the demonstration applications of the Qt Toolkit.
@@ -51,6 +51,7 @@
 #include "webview.h"
 
 #include <QtCore/QBuffer>
+#include <QtCore/QCommandLineParser>
 #include <QtCore/QDir>
 #include <QtCore/QLibraryInfo>
 #include <QtCore/QSettings>
@@ -75,36 +76,65 @@ HistoryManager *BrowserApplication::s_historyManager = 0;
 NetworkAccessManager *BrowserApplication::s_networkAccessManager = 0;
 BookmarksManager *BrowserApplication::s_bookmarksManager = 0;
 
+static void showHelp(QCommandLineParser &parser, const QString errorMessage = QString())
+{
+    QString text;
+    QTextStream str(&text);
+    str << "<html><head/><body>";
+    if (!errorMessage.isEmpty())
+        str << errorMessage;
+    str << "<pre>" << parser.helpText() << "</pre></body></html>";
+    QMessageBox box(errorMessage.isEmpty() ? QMessageBox::Information : QMessageBox::Warning,
+        QGuiApplication::applicationDisplayName(), text, QMessageBox::Ok);
+    box.setTextInteractionFlags(Qt::TextBrowserInteraction);
+    box.exec();
+}
+
 BrowserApplication::BrowserApplication(int &argc, char **argv)
     : QApplication(argc, argv)
     , m_localServer(0)
+    , m_initialUrl(QString())
+    , m_correctlyInitialized(false)
 {
     QCoreApplication::setOrganizationName(QLatin1String("Qt"));
     QCoreApplication::setApplicationName(QLatin1String("demobrowser"));
     QCoreApplication::setApplicationVersion(QLatin1String("0.1"));
-#ifdef Q_WS_QWS
-    // Use a different server name for QWS so we can run an X11
-    // browser and a QWS browser in parallel on the same machine for
-    // debugging
-    QString serverName = QCoreApplication::applicationName() + QLatin1String("_qws");
-#else
+
+    QCommandLineParser commandLineParser;
+    commandLineParser.addPositionalArgument(QStringLiteral("url"),
+        QStringLiteral("The url to be loaded in the browser window."));
+
+    if (!commandLineParser.parse(QCoreApplication::arguments())) {
+        showHelp(commandLineParser, QStringLiteral("<p>Invalid argument</p>"));
+        return;
+    }
+
+    QStringList args = commandLineParser.positionalArguments();
+    if (args.count() > 1) {
+        showHelp(commandLineParser, QStringLiteral("<p>Too many arguments.</p>"));
+        return;
+    } else if (args.count() == 1) {
+        m_initialUrl = args.at(0);
+    }
+    if (!m_initialUrl.isEmpty() && !QUrl::fromUserInput(m_initialUrl).isValid()) {
+        showHelp(commandLineParser, QString("<p>%1 is not a valid url</p>").arg(m_initialUrl));
+        return;
+    }
+
+    m_correctlyInitialized = true;
+
     QString serverName = QCoreApplication::applicationName();
-#endif
     QLocalSocket socket;
     socket.connectToServer(serverName);
     if (socket.waitForConnected(500)) {
         QTextStream stream(&socket);
-        QStringList args = QCoreApplication::arguments();
-        if (args.count() > 1)
-            stream << args.last();
-        else
-            stream << QString();
+        stream << m_initialUrl;
         stream.flush();
         socket.waitForBytesWritten();
         return;
     }
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     QApplication::setQuitOnLastWindowClosed(false);
 #else
     QApplication::setQuitOnLastWindowClosed(true);
@@ -138,7 +168,7 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
     m_lastSession = settings.value(QLatin1String("lastSession")).toByteArray();
     settings.endGroup();
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     connect(this, SIGNAL(lastWindowClosed()),
             this, SLOT(lastWindowClosed()));
 #endif
@@ -157,7 +187,7 @@ BrowserApplication::~BrowserApplication()
     delete s_bookmarksManager;
 }
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
 void BrowserApplication::lastWindowClosed()
 {
     clean();
@@ -172,7 +202,7 @@ BrowserApplication *BrowserApplication::instance()
     return (static_cast<BrowserApplication *>(QCoreApplication::instance()));
 }
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
 #include <QtWidgets/QMessageBox>
 void BrowserApplication::quitBrowser()
 {
@@ -213,9 +243,8 @@ void BrowserApplication::postLaunch()
 
     // newMainWindow() needs to be called in main() for this to happen
     if (m_mainWindows.count() > 0) {
-        QStringList args = QCoreApplication::arguments();
-        if (args.count() > 1)
-            mainWindow()->loadPage(args.last());
+        if (!m_initialUrl.isEmpty())
+            mainWindow()->loadPage(m_initialUrl);
         else
             mainWindow()->slotHome();
     }
@@ -329,6 +358,11 @@ bool BrowserApplication::isTheOnlyBrowser() const
     return (m_localServer != 0);
 }
 
+bool BrowserApplication::isCorrectlyInitialized() const
+{
+    return m_correctlyInitialized;
+}
+
 void BrowserApplication::installTranslator(const QString &name)
 {
     QTranslator *translator = new QTranslator(this);
@@ -336,7 +370,7 @@ void BrowserApplication::installTranslator(const QString &name)
     QApplication::installTranslator(translator);
 }
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
 bool BrowserApplication::event(QEvent* event)
 {
     switch (event->type()) {
