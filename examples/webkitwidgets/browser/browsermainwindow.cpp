@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the demonstration applications of the Qt Toolkit.
@@ -98,7 +98,7 @@ BrowserMainWindow::BrowserMainWindow(QWidget *parent, Qt::WindowFlags flags)
     QVBoxLayout *layout = new QVBoxLayout;
     layout->setSpacing(0);
     layout->setMargin(0);
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     layout->addWidget(m_bookmarksToolbar);
     layout->addWidget(new QWidget); // <- OS X tab widget style bug
 #else
@@ -133,7 +133,7 @@ BrowserMainWindow::BrowserMainWindow(QWidget *parent, Qt::WindowFlags flags)
             m_navigationBar, SLOT(setVisible(bool)));
     connect(m_tabWidget, SIGNAL(toolBarVisibilityChangeRequested(bool)),
             m_bookmarksToolbar, SLOT(setVisible(bool)));
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     connect(m_tabWidget, SIGNAL(lastTabClosed()),
             this, SLOT(close()));
 #else
@@ -278,7 +278,7 @@ void BrowserMainWindow::setupMenu()
     action->setCheckable(true);
     fileMenu->addSeparator();
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     fileMenu->addAction(tr("&Quit"), BrowserApplication::instance(), SLOT(quitBrowser()), QKeySequence(Qt::CTRL | Qt::Key_Q));
 #else
     fileMenu->addAction(tr("&Quit"), this, SLOT(close()), QKeySequence(Qt::CTRL | Qt::Key_Q));
@@ -591,7 +591,7 @@ void BrowserMainWindow::slotUpdateWindowTitle(const QString &title)
     if (title.isEmpty()) {
         setWindowTitle(tr("Qt Demo Browser"));
     } else {
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
         setWindowTitle(title);
 #else
         setWindowTitle(tr("%1 - Qt Demo Browser", "Page title and Browser name").arg(title));
