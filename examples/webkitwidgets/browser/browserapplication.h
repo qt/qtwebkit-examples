@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the demonstration applications of the Qt Toolkit.
@@ -44,8 +44,8 @@
 
 #include <QtWidgets/QApplication>
 
-#include <QtCore/QUrl>
 #include <QtCore/QPointer>
+#include <QtCore/QUrl>
 
 #include <QtGui/QIcon>
 
@@ -70,6 +70,7 @@ public:
     void loadSettings();
 
     bool isTheOnlyBrowser() const;
+    bool isCorrectlyInitialized() const;
     BrowserMainWindow *mainWindow();
     QList<BrowserMainWindow*> mainWindows();
     QIcon icon(const QUrl &url) const;
@@ -83,14 +84,14 @@ public:
     static NetworkAccessManager *networkAccessManager();
     static BookmarksManager *bookmarksManager();
 
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     bool event(QEvent *event);
 #endif
 
 public slots:
     BrowserMainWindow *newMainWindow();
     void restoreLastSession();
-#if defined(Q_WS_MAC)
+#if defined(Q_OS_OSX)
     void lastWindowClosed();
     void quitBrowser();
 #endif
@@ -112,6 +113,9 @@ private:
     QList<QPointer<BrowserMainWindow> > m_mainWindows;
     QLocalServer *m_localServer;
     QByteArray m_lastSession;
+    QString m_initialUrl;
+    bool m_correctlyInitialized;
+
     mutable QIcon m_defaultIcon;
 };
 
