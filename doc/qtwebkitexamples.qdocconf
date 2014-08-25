@@ -30,6 +30,8 @@ depends += qtcore qtconcurrent qtdesigner qtqml qtnetwork qtwidgets qtquick qtgu
 
 exampledirs = ../examples
 
+examples.fileextensions += "*.html *.plist *.rc *.xbel"
+
 sourcedirs = src
 
 imagedirs = images
