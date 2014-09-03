@@ -288,12 +288,14 @@ void WebView::mousePressEvent(QMouseEvent *event)
 void WebView::mouseReleaseEvent(QMouseEvent *event)
 {
     QWebView::mouseReleaseEvent(event);
+#ifndef QT_NO_CLIPBOARD
     if (!event->isAccepted() && (m_page->m_pressedButtons & Qt::MidButton)) {
         QUrl url(QApplication::clipboard()->text(QClipboard::Selection));
         if (!url.isEmpty() && url.isValid() && !url.scheme().isEmpty()) {
             setUrl(url);
         }
     }
+#endif
 }
 
 void WebView::setStatusBarText(const QString &string)

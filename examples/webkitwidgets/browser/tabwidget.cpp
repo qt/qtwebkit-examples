@@ -658,6 +658,7 @@ void TabWidget::contextMenuEvent(QContextMenuEvent *event)
 
 void TabWidget::mouseReleaseEvent(QMouseEvent *event)
 {
+#ifndef QT_NO_CLIPBOARD
     if (event->button() == Qt::MidButton && !childAt(event->pos())
             // Remove the line below when QTabWidget does not have a one pixel frame
             && event->pos().y() < (tabBar()->y() + tabBar()->height())) {
@@ -667,6 +668,7 @@ void TabWidget::mouseReleaseEvent(QMouseEvent *event)
             webView->setUrl(url);
         }
     }
+#endif
 }
 
 void TabWidget::loadUrlInCurrentTab(const QUrl &url)
