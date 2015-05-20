@@ -115,7 +115,8 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
 
     m_correctlyInitialized = true;
 
-    QString serverName = QCoreApplication::applicationName();
+    QString serverName = QCoreApplication::applicationName()
+        + QString::fromLatin1(QT_VERSION_STR).remove('.') + QLatin1String("webkit");
     QLocalSocket socket;
     socket.connectToServer(serverName);
     if (socket.waitForConnected(500)) {
