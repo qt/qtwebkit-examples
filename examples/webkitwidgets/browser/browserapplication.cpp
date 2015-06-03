@@ -115,7 +115,8 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
 
     m_correctlyInitialized = true;
 
-    QString serverName = QCoreApplication::applicationName();
+    QString serverName = QCoreApplication::applicationName()
+        + QString::fromLatin1(QT_VERSION_STR).remove('.') + QLatin1String("webkit");
     QLocalSocket socket;
     socket.connectToServer(serverName);
     if (socket.waitForConnected(500)) {
@@ -201,7 +202,7 @@ void BrowserApplication::quitBrowser()
     clean();
     int tabCount = 0;
     for (int i = 0; i < m_mainWindows.count(); ++i) {
-        tabCount =+ m_mainWindows.at(i)->tabWidget()->count();
+        tabCount += m_mainWindows.at(i)->tabWidget()->count();
     }
 
     if (tabCount > 1) {
