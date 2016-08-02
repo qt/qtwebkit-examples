@@ -11,4 +11,5 @@ RESOURCES = resources/imageanalyzer.qrc
 
 EXAMPLE_FILES += html/index.html ../webkit-bridge-tutorial.qdoc outline.txt
 
-
+target.path = $$[QT_INSTALL_EXAMPLES]/webkitwidgets/imageanalyzer
+INSTALLS += target
