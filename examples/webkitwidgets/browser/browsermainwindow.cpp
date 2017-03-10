@@ -678,7 +678,7 @@ void BrowserMainWindow::slotPrivateBrowsing()
         QList<BrowserMainWindow*> windows = BrowserApplication::instance()->mainWindows();
         for (int i = 0; i < windows.count(); ++i) {
             BrowserMainWindow *window = windows.at(i);
-            window->m_lastSearch = QString::null;
+            window->m_lastSearch = QString();
             window->tabWidget()->clear();
         }
     }
