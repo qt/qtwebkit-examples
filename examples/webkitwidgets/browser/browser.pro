@@ -89,10 +89,6 @@ mac {
     }
 }
 
-wince*: {
-    DEPLOYMENT_PLUGIN += qjpeg qgif
-}
-
 EXAMPLE_FILES = Info_mac.plist browser.icns browser.ico browser.rc
 
 # install
