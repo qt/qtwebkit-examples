@@ -90,9 +90,9 @@ public:
 private slots:
     void rotateRandom()
     {
-        m_wheel1->scrollTo(m_wheel1->currentIndex() + (qrand() % 200));
-        m_wheel2->scrollTo(m_wheel2->currentIndex() + (qrand() % 200));
-        m_wheel3->scrollTo(m_wheel3->currentIndex() + (qrand() % 200));
+        m_wheel1->scrollTo(m_wheel1->currentIndex() + QRandomGenerator::bounded(200));
+        m_wheel2->scrollTo(m_wheel2->currentIndex() + QRandomGenerator::bounded(200));
+        m_wheel3->scrollTo(m_wheel3->currentIndex() + QRandomGenerator::bounded(200));
     }
 
 private:
